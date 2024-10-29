@@ -16,7 +16,7 @@
 | [rename]   | 파일 이름 변경이 있을 때 사용                  |
 | [improve]  | 향상이 있을 때 사용                        |
 | [refactor] | 전면 수정이 있을 때 사용                     |
-| [test]     | 테스트 코드 추가 시 사용                     |
+| [style]     | css 및 스타일 수정시 사용                     |
 
 
 - 커밋 규칙 -> FEAT. 해당 기능 설명
@@ -29,9 +29,7 @@
 3. Add - Commit - Push - Pull Request 의 과정을 거친다.
 3. 작업이 완료되었다면, Remote Repository(Github)에 해당 브랜치를 올린다.
 4. Github에서 PR을 생성한다.
-5. CI 테스트를 잘 통과했다면, 해당 PR에 관한 리뷰를 요청한다.
-6. 리뷰에서 Approve를 받지 못했다면, 수정 사항을 처리해서 다시 올린다.
-7. Approve를 받았다면, Merge를 진행한다.
+7. 작업 후 Merge를 진행한다.
 8. merge된 Branch는 삭제한다.
 9. 종료된 Issue와 Pull Request의 Label과 Project를 관리한다.
 
