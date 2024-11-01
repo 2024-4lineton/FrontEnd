@@ -18,7 +18,7 @@ export default function OnedayclassContainer(){
 
 const Wrapper = styled.div`
 width: 14.375rem;
-height: 13.25rem;
+height: auto;
 border-radius: 0.5rem;
 position: relative;
 margin-left: 0.75rem;
