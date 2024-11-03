@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import back from "../../../assets/TraditionalMarket/arrow.svg";
 import { useNavigate } from "react-router-dom";
+import back from "../../../assets/TraditionalMarket/arrow.svg";
 
 export default function Title(){
 
@@ -16,6 +16,7 @@ export default function Title(){
     );
 }
 
+
 const Name = styled.div`
 color: #333;
 font-family: Pretendard;
@@ -26,7 +27,7 @@ line-height: normal;
 `
 
 const Container = styled.div`
-margin: 1.5rem 0 0 1rem;
+    margin: 1.5rem 0 0 1rem;
     display: flex;
     align-items: center;
     cursor: pointer;

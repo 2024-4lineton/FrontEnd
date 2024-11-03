@@ -13,7 +13,8 @@ export default function Nav(){
     const location = useLocation();
 
     const isCommunitySelected = location.pathname === '/community';
-    const isLocalSelected = location.pathname === '/traditional-market' || location.pathname === '/traditional-detail';
+    const isLocalSelected = location.pathname === '/traditional-market' || location.pathname === '/traditional-detail'
+            || location.pathname === '/street-market';
     const isMyPageSelected = location.pathname === '/mypage';
 
 
