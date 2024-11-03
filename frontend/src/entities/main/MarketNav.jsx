@@ -5,10 +5,12 @@ import market1 from "../../assets/Main/traditional.svg";
 import market2 from "../../assets/Main/street.svg";
 import market3 from "../../assets/Main/brand.svg";
 import { hoverGrow } from "../../shared/animation/hoverGrow";
+import { useNavigate } from "react-router-dom";
 
 export default function MarketNav(){
 
     const [location, setLocation] = useState('성북구 삼선동');
+    const navigate = useNavigate("");
 
     return(
         <Wrapper>
@@ -18,7 +20,7 @@ export default function MarketNav(){
                 
             </LocationContainer>
             <NavContainer>
-                <NavIcon src={market1}/>
+                <NavIcon src={market1} onClick={()=>navigate('/traditional-market')}/>
                 <NavIcon src={market2}/>
                 <NavIcon src={market3}/>
             </NavContainer>

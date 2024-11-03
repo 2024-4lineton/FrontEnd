@@ -3,12 +3,16 @@ import logo from '../../assets/Header/logo.svg'
 import search from '../../assets/Header/search.svg'
 import bell from '../../assets/Header/bell.svg'
 import cart from '../../assets/Header/cart.svg'
+import {useNavigate} from 'react-router-dom';
 
 export default function Header(){
+
+    const navigate=useNavigate("");
+
     return(
     <Wrapper>
 
-        <Logo src={logo}/>
+        <Logo src={logo} onClick={()=>navigate('/')}/>
 
         <ButtonContainer>
             <Button src={search}/>
