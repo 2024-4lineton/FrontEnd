@@ -27,5 +27,6 @@ code {
       margin: 0px auto !important;
       box-shadow: 0 0 17px 3px rgb(171 171 171 / 50%);
       position: relative;
+      min-height: 100vh;
   }
 }
