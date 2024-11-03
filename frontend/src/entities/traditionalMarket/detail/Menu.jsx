@@ -1,13 +1,17 @@
 import styled from "styled-components";
 import menu from '../../../assets/TraditionalMarket/menu.svg';
+import { useNavigate } from "react-router-dom";
 
 export default function Menu(){
+
+    const navigate = useNavigate("");
+        
     return(
     <Wrapper>
 
         <Img src={menu}/>
 
-        <Content>
+        <Content onClick={()=>navigate('/menu-detail')}>
             <Name>돈암김밥</Name>
             <MenuName>원조김밥</MenuName>
 
