@@ -21,7 +21,7 @@ export default function MarketNav(){
             </LocationContainer>
             <NavContainer>
                 <NavIcon src={market1} onClick={()=>navigate('/traditional-market')}/>
-                <NavIcon src={market2}/>
+                <NavIcon src={market2} onClick={()=>navigate('/street-market')}/>
                 <NavIcon src={market3}/>
             </NavContainer>
         </Wrapper>
