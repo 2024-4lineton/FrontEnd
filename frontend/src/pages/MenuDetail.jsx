@@ -125,17 +125,15 @@ const ButtonContainer = styled.div`
 display: flex;
 justify-content: space-between;
 padding: 0 1rem 1.5rem 1rem;
-min-width: 440px;
 margin-top: 9rem;
 `
 
 const ReservationButton = styled.div`
-display: inline-flex;
+display: flex;
+width: 49%;
 height: 3.375rem;
-padding: 1.0625rem 4.5rem;
 justify-content: center;
 align-items: center;
-gap: 0.625rem;
 flex-shrink: 0;
 border-radius: 0.75rem;
 background: #577D58;
