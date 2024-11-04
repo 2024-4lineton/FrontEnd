@@ -3,10 +3,38 @@ import Header from "../shared/components/Header";
 import menu from "../assets/TraditionalMarket/menu.svg";
 import back from "../assets/TraditionalMarket/arrow.svg";
 import { useNavigate } from "react-router-dom";
+import CartModal from "../entities/menuDetail/CartModal";
+import ReservationModal from "../entities/menuDetail/ReservationModal";
+import { useState, useEffect } from "react";
 
 export default function MenuDetail(){
 
     const navigate = useNavigate('');
+    const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+    const [isReservationModalOpen, setIsReservationModalOpen] = useState(false);
+
+    const openCartModal = () => {
+        setIsCartModalOpen(true);
+    };
+
+    const closeCartModal = () => {
+        setIsCartModalOpen(false);
+    };
+
+    const openReservationModal = () => {
+        setIsReservationModalOpen(true);
+    };
+
+    const closeReservationModal = () => {
+        setIsReservationModalOpen(false);
+    };
+
+    useEffect(() => {
+        if (isReservationModalOpen) {
+            const timer = setTimeout(closeReservationModal, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [isReservationModalOpen]);
 
     return(
     <Wrapper>
@@ -36,10 +64,13 @@ export default function MenuDetail(){
         </MenuContainer>
 
         <ButtonContainer>
-            <CartButton>장바구니</CartButton>
-            <ReservationButton>예약하기</ReservationButton>
+            <CartButton onClick={openCartModal}>장바구니</CartButton>
+            <ReservationButton onClick={openReservationModal}>예약하기</ReservationButton>
         </ButtonContainer>
 
+
+        {isCartModalOpen && <CartModal onClose={closeCartModal} />}
+        {isReservationModalOpen && <ReservationModal onClose={closeReservationModal} />}
     </Wrapper>);
 }
 
