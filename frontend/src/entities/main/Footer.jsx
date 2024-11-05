@@ -31,7 +31,6 @@ export default function Footer(){
 
 const Wrapper = styled.div`
 width: 100%;
-margin-top: 2.5rem;
 
 `
 

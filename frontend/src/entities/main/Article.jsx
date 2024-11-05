@@ -48,7 +48,7 @@ export default function Article(){
                 <Articlecontent/>
             </Content>
 
-            <div style={{padding: "0 1rem"}}><Button>커뮤니티 글 더 보러가기</Button></div>
+            <div style={{padding: "0 1rem", marginBottom:"2.5rem"}}><Button>커뮤니티 글 더 보러가기</Button></div>
         </>
     );
 }

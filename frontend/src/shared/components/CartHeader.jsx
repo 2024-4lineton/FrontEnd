@@ -1,28 +1,21 @@
-import styled from 'styled-components'
 import logo from '../../assets/Header/logo.svg'
 import search from '../../assets/Header/search.svg'
 import bell from '../../assets/Header/bell.svg'
-import cart from '../../assets/Header/cart.svg'
+import back from '../../assets/TraditionalMarket/arrow.svg'
 import {useNavigate} from 'react-router-dom';
+import styled from 'styled-components';
 
-export default function Header(){
-
+export default function CartHeader(){
     const navigate=useNavigate("");
 
     return(
     <Wrapper>
-
-        <Logo src={logo} onClick={()=>navigate('/')}/>
-
-        <ButtonContainer>
-            <Button src={search}/>
+            <Button src={back} onClick={()=>navigate(-1)}/>
+            <Logo src={logo} onClick={()=>navigate('/')}/>
             <Button src={bell}/>
-            <Button src={cart} onClick={()=>navigate('/cart')}/>
-        </ButtonContainer>
 
     </Wrapper>
     );
-    
 }
 
 const Wrapper = styled.div`
@@ -43,9 +36,4 @@ const Button = styled.img`
     width: 1.5rem;
     height: 1.5rem;
     cursor: pointer;
-`
-
-const ButtonContainer = styled.div`
-    display:flex;
-    gap:1.25rem;
 `
