@@ -13,7 +13,7 @@ export default function MainComponent(){
         <MarketNav/>
         <LastChance/>
         <Recommend/>
-        <Onedayclass/>
+        {/* <Onedayclass/> */}
         <Article/>
         <Footer/>
     </>
