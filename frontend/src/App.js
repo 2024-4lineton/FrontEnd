@@ -5,6 +5,7 @@ import TraditionalMarketDetail from "./pages/TraditionalMarketDetail";
 import StreetMarket from './pages/StreetMarket';
 import MenuDetail from "./pages/MenuDetail";
 import Cart from "./pages/CartPage";
+import MarketRegistration from "./pages/MarketRegistration";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/street-market" element={<StreetMarket/>}/>
       <Route path="/menu-detail" element={<MenuDetail/>}/>
       <Route path="/cart" element={<Cart/>}/>
+      <Route path="/market-registration" element={<MarketRegistration/>}/>
     </Routes>
   );
 }
