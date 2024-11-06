@@ -17,7 +17,7 @@ export default function Footer(){
 
             <Container>
                 <Name>입점문의</Name>
-                <Content>likelion4@helfoome.co</Content>
+                <Content>likelion4@helfoome.com</Content>
             </Container>
 
             <div style={{display:"flex", gap:"1.62rem", marginTop:"2.5rem"}}>
