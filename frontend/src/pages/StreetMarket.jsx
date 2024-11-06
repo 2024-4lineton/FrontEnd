@@ -19,22 +19,16 @@ export default function StreetMarket(){
         <Title />
         <NavContainer>
             <NavButton
-                onClick={() => handleClick("가까운순")}
-                isSelected={selected === "가까운순"}
-            >
-                가까운순
-            </NavButton>
-            <NavButton
                 onClick={() => handleClick("할인순")}
                 isSelected={selected === "할인순"}
             >
                 할인순
             </NavButton>
             <NavButton
-                onClick={() => handleClick("최저가순")}
-                isSelected={selected === "최저가순"}
+                onClick={() => handleClick("가까운순")}
+                isSelected={selected === "가까운순"}
             >
-                최저가순
+                가까운순
             </NavButton>
             <NavButton
                 onClick={() => handleClick("업로드순")}
@@ -70,28 +64,27 @@ const NavBar = styled.div`
 `;
 
 const NavContainer = styled.div`
-margin-top: 1rem;
-display: flex;
-padding: 0 1rem;
-gap: 0.75rem;
-`
+    margin-top: 1rem;
+    display: flex;
+    padding: 0 1rem;
+    gap: 0.75rem;
+`;
 
 const NavButton = styled.div`
-  border-radius: 1.25rem;
-  background: ${({ isSelected }) => (isSelected ? "#2D2F2D" : "#EEEEEE")};
-  width: 100%;
-  padding: 0.25rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${({ isSelected }) => (isSelected ? "white" : "#999")};
-  font-family: Pretendard;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+    border-radius: 1.25rem;
+    background: ${({ isSelected }) => (isSelected ? "#2D2F2D" : "#EEEEEE")};
+    width: 6.4375rem;
+    padding: 0.25rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${({ isSelected }) => (isSelected ? "white" : "#999")};
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
 `;
 
 const ContentContainer = styled.div`

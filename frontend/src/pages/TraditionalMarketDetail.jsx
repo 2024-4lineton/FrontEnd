@@ -20,22 +20,22 @@ export default function TraditionalMarketDetail() {
             <Slider />
             <NavContainer>
                 <NavButton
-                    onClick={() => handleClick("아티클")}
-                    isSelected={selected === "아티클"}
+                    onClick={() => handleClick("할인순")}
+                    isSelected={selected === "할인순"}
                 >
-                    기본순
+                    할인순
                 </NavButton>
                 <NavButton
-                    onClick={() => handleClick("자유")}
-                    isSelected={selected === "자유"}
-                >
-                    업로드순
-                </NavButton>
-                <NavButton
-                    onClick={() => handleClick("구해요")}
-                    isSelected={selected === "구해요"}
+                    onClick={() => handleClick("가까운순")}
+                    isSelected={selected === "가까운순"}
                 >
                     가까운순
+                </NavButton>
+                <NavButton
+                    onClick={() => handleClick("업로드순")}
+                    isSelected={selected === "업로드순"}
+                >
+                    업로드순
                 </NavButton>
             </NavContainer>
             <ContentContainer>
