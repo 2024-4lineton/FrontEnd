@@ -2,7 +2,10 @@ import Header2 from "../shared/components/Header2";
 import styled from "styled-components";
 import profile from '../assets/MarketRegistration/profileImg.svg';
 import Footer from "../entities/main/Footer";
+import check from "../assets/Resgistration/checkcircle.svg";
+import info from "../assets/Resgistration/infocircle.svg";
 import { useState, useEffect } from "react";
+
 
 export default function MarketRegistration(){
 
@@ -14,7 +17,11 @@ export default function MarketRegistration(){
     const [selectedOpenTime, setSelectedOpenTime] = useState("");
     const [selectedClosedTime, setSelectedClosedTime] = useState("");
     const [selectedDays, setSelectedDays] = useState([]);
+    const [traditionalMarketName, setTraditionalMarketName] = useState("");
     const [isFormComplete, setIsFormComplete] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const categoryOptions = ["전통시장", "골목시장", "브랜드"];
 
     const handleDayClick = (day) => {
         setSelectedDays((prevSelectedDays) =>
@@ -24,7 +31,6 @@ export default function MarketRegistration(){
         );
     };
 
-    // 시간 제어 함수
     const handleTimeChange = (event) => {
         let value = event.target.value;
         if (value.length > 2) {
@@ -33,17 +39,21 @@ export default function MarketRegistration(){
         event.target.value = value.replace(/\D/g, '');
     };
 
-    const handleContent =(event) => {
+    const handleContent = (event) => {
         setStoreName(""); setCategory(""); setPhoneNumber(""); setAddress(""); setSelectedOpenTime("");
-        setSelectedClosedTime(""); setSelectedDays("");setIsFormComplete("");
+        setSelectedClosedTime(""); setSelectedDays([]); setIsFormComplete(false);
+        document.querySelectorAll("input[placeholder='00']").forEach((input) => {
+            input.value = "00";
+        });
     }
 
-    // 모든 필수 입력 항목이 입력되었는지 확인
     useEffect(() => {
         const isComplete = storeName && category && phoneNumber && address && selectedDays.length > 0 
             && selectedOpenTime && selectedClosedTime;
         setIsFormComplete(isComplete);
     }, [storeName, category, phoneNumber, address, selectedDays, selectedOpenTime, selectedClosedTime]);
+
+    const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
 
     return (
         <>
@@ -65,11 +75,36 @@ export default function MarketRegistration(){
                 />
 
                 <Title style={{ marginTop: "1.25rem" }}>카테고리</Title>
+                <DropdownContainer>
+                    <DropdownHeader onClick={toggleDropdown}>
+                        {category || "가게 분류를 위해 업태 종류를 선택해주세요."}
+                    </DropdownHeader>
+                    {isDropdownOpen && (
+                        <DropdownList>
+                            {categoryOptions.map((option, index) => (
+                                <DropdownItem
+                                    key={index}
+                                    onClick={() => {
+                                        setCategory(option);
+                                        setIsDropdownOpen(false);
+                                    }}
+                                >
+                                    {option}
+                                </DropdownItem>
+                            ))}
+                        </DropdownList>
+                    )}
+                </DropdownContainer>
+
+                <div style={{display:"flex", gap:"0.5rem", width: "100%"}}>
                 <Input
-                    placeholder="가게 분류를 위해 업태 종류를 선택해주세요."
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
+                    placeholder="입점하고 계신 전통시장의 이름을 입력해주세요."
+                    value={traditionalMarketName}
+                    onChange={(e) => setTraditionalMarketName(e.target.value)}
+                    style={{width:"80%"}}
                 />
+                <SubmitButton>등록</SubmitButton>
+                </div>
 
                 <Title style={{ marginTop: "1.25rem" }}>가게 전화번호</Title>
                 <Input
@@ -271,8 +306,8 @@ color: ${({ selected }) => (selected ? "#F07D45" : "#999")};
 const Info = styled(Font)`
 color: #999;
 font-weight: 400;
-font-size: 1rem;
 margin-top: 0.5rem;
+font-size: 0.75rem;
 `
 
 const Div = styled(Font)`
@@ -374,3 +409,67 @@ text-align:center;
 margin-top: 1rem;
 cursor: pointer;
 `
+
+const DropdownContainer = styled.div`
+    position: relative;
+    width: 100%;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+`;
+
+const DropdownHeader = styled.div`
+    padding: 0.75rem;
+    border: 1px solid #EEE;
+    border-radius: 0.5rem;
+    background-color: #FFF;
+    cursor: pointer;
+    color: #999;
+    &:hover {
+        border: 1px solid #F07D45;
+    }
+`;
+
+const DropdownList = styled.ul`
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #EEE;
+    border-radius: 0.5rem;
+    background-color: #FFF;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+`;
+
+const DropdownItem = styled.li`
+    padding: 0.75rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    &:hover {
+        background-color: #F07D45;
+        color: #FFF;
+        border-radius: 0.5rem;
+    }
+`;
+
+const SubmitButton = styled.div`
+  cursor: pointer;
+  display: inline-flex;
+  height: 2.75rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  background: #EEE;
+  margin-top: 0.5rem;
+  padding: 0 1.56rem;
+  color: #999;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+`;
