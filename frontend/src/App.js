@@ -6,6 +6,7 @@ import StreetMarket from './pages/StreetMarket';
 import MenuDetail from "./pages/MenuDetail";
 import Cart from "./pages/CartPage";
 import MarketRegistration from "./pages/MarketRegistration";
+import CompanyCertification from "./pages/CompanyCertification";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/menu-detail" element={<MenuDetail/>}/>
       <Route path="/cart" element={<Cart/>}/>
       <Route path="/market-registration" element={<MarketRegistration/>}/>
+      <Route path="/company-certification" element={<CompanyCertification/>}/>
     </Routes>
   );
 }
