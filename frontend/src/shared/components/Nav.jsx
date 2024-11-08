@@ -43,7 +43,7 @@ padding: 0 1.5rem;
 display: flex;
 justify-content: space-between;
 align-items: center;
-width: 100%;
+width: 440px;
 position: fixed;
 bottom: 0
 `

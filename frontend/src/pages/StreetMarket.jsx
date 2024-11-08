@@ -54,7 +54,7 @@ export default function StreetMarket() {
 const Wrapper = styled.div`
   position: relative;
   width: 440px;
-  margin: 0 auto;
+  // margin: 0 auto;
   height: 100vh;
 `;
 
