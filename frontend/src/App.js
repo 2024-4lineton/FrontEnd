@@ -8,6 +8,7 @@ import Cart from "./pages/CartPage";
 import MarketRegistration from "./pages/MarketRegistration";
 import CompanyCertification from "./pages/CompanyCertification";
 import Sell from "./pages/Sell";
+import Helfoome from "./pages/Helfoome";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/market-registration" element={<MarketRegistration/>}/>
       <Route path="/company-certification" element={<CompanyCertification/>}/>
       <Route path="/sell" element={<Sell/>}/>
+      <Route path="/helfoome" element={<Helfoome/>}/>
     </Routes>
   );
 }
