@@ -8,6 +8,8 @@ import Cart from "./pages/CartPage";
 import MarketRegistration from "./pages/MarketRegistration";
 import CompanyCertification from "./pages/CompanyCertification";
 import Sell from "./pages/Sell";
+import styled from "styled-components";
+import Login from "./pages/Login/Login";
 
 function App() {
   return (
@@ -21,8 +23,16 @@ function App() {
       <Route path="/market-registration" element={<MarketRegistration/>}/>
       <Route path="/company-certification" element={<CompanyCertification/>}/>
       <Route path="/sell" element={<Sell/>}/>
+      <Route path="/Login" element={<Login />} />
     </Routes>
   );
 }
 
 export default App;
+
+const Wrapper = styled.div`
+    position: relative;
+    width: 440px;
+    margin: 0 auto;
+    height: 100vh;
+`;
