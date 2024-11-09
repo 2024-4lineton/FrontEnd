@@ -7,6 +7,7 @@ import MenuDetail from "./pages/MenuDetail";
 import Cart from "./pages/CartPage";
 import MarketRegistration from "./pages/MarketRegistration";
 import CompanyCertification from "./pages/CompanyCertification";
+import Sell from "./pages/Sell";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/cart" element={<Cart/>}/>
       <Route path="/market-registration" element={<MarketRegistration/>}/>
       <Route path="/company-certification" element={<CompanyCertification/>}/>
+      <Route path="/sell" element={<Sell/>}/>
     </Routes>
   );
 }
