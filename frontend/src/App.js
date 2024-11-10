@@ -35,7 +35,8 @@ function App() {
         <Route path="/Login" element={<Login />} />
       </Routes>
     </Wrapper>
-
+  )
+}
 export default App;
 
 const Wrapper = styled.div`
