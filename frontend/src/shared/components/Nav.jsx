@@ -12,7 +12,8 @@ export default function Nav(){
     const navigate= useNavigate('');
     const location = useLocation();
 
-    const isCommunitySelected = location.pathname === '/community';
+    const isCommunitySelected = location.pathname === '/community' || location.pathname === '/community-popular-more' 
+    || location.pathname === '/community-new-more' || location.pathname === '/business-sell-more' || location.pathname === '/business-purchase-more';
     const isLocalSelected = location.pathname === '/traditional-market' || location.pathname === '/traditional-detail'
             || location.pathname === '/street-market';
     const isMyPageSelected = location.pathname === '/mypage';
@@ -20,7 +21,7 @@ export default function Nav(){
 
     return(
     <Wrapper>
-        <Content onClick={() => navigate('/')}>
+        <Content onClick={() => navigate('/community')}>
             <Icon src={isCommunitySelected ? blackglobe : globe}/>
             <Option isSelected={isCommunitySelected}>커뮤니티</Option>
         </Content>
