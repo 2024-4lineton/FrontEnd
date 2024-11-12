@@ -14,14 +14,14 @@ export default function PurchaseMore(){
         </Title>
 
         <Wrapper>
-        <BusinessContent/>
-        <BusinessContent/>
-        <BusinessContent/>
-        <BusinessContent/>
-        <BusinessContent/>
-        <BusinessContent/>
-        <BusinessContent/>
-        <BusinessContent/>
+            <BusinessContent/>
+            <BusinessContent/>
+            <BusinessContent/>
+            <BusinessContent/>
+            <BusinessContent/>
+            <BusinessContent/>
+            <BusinessContent/>
+            <BusinessContent/>
             <BusinessContent/>
         </Wrapper>
 
