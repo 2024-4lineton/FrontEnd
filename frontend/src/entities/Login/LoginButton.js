@@ -1,11 +1,18 @@
 import styled from "styled-components"
 import { hoverGrow } from "../../shared/animation/hoverGrow"
+import { kakaoLogin } from "../../apis/api/login.js";
 
 export default function LoginButton({methodImg, method, color, backgroundColor}) {
   const isGoogle = method === "구글";
 
+  const login = () => {
+    if(method === "카카오") {
+      kakaoLogin();
+    }
+  }
+
   return (
-    <ButtonContainer backgroundColor={backgroundColor} isGoogle={isGoogle}>
+    <ButtonContainer backgroundColor={backgroundColor} isGoogle={isGoogle} onClick={login}>
         <img src={methodImg} alt="methodImg" />
         <LoginText color={color}>{method}로 시작하기</LoginText>
     </ButtonContainer>
@@ -38,4 +45,5 @@ const LoginText = styled.p`
   font-weight: 600;
   line-height: normal;
   color: ${({color}) => color};
+  margin: 0;
 `
