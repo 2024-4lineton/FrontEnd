@@ -2,11 +2,13 @@ import styled from "styled-components";
 import Articlecontent from "./Articlecontent";
 import { hoverGrow } from "../../shared/animation/hoverGrow";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Article(){
 
     const [selected, setSelected] = useState("아티클");
+    const navigate = useNavigate('');
 
     const handleClick = (buttonName) => {
         setSelected(buttonName);
@@ -48,7 +50,7 @@ export default function Article(){
                 <Articlecontent/>
             </Content>
 
-            <div style={{padding: "0 1rem", marginBottom:"2.5rem"}}><Button>커뮤니티 글 더 보러가기</Button></div>
+            <div style={{padding: "0 1rem", marginBottom:"2.5rem"}}><Button onClick={()=>navigate('/community')}>커뮤니티 글 더 보러가기</Button></div>
         </>
     );
 }

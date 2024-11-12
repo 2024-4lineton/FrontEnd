@@ -16,6 +16,7 @@ import CommunityPopularMore from "./pages/CommunityPopularMore";
 import CommunityNewMore from "./pages/CommunityNewMore";
 import BusinessSellMore from "./pages/BusinessSellMore";
 import BusinessPurchaseMore from "./pages/BusinessPurchaseMore";
+import CommunityWriting from "./pages/CommunityWriting";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
       <Route path="/community-new-more" element={<CommunityNewMore />} />
       <Route path="/business-sell-more" element={<BusinessSellMore />} />
       <Route path="/business-purchase-more" element={<BusinessPurchaseMore />} />
+      <Route path="/community-writing" element={<CommunityWriting />} />
     </Routes>
   );
 }

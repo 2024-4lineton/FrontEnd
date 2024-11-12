@@ -4,14 +4,17 @@ import Nav from "../shared/components/Nav";
 import floating from '../assets/Community/floating.svg';
 import { hoverGrow } from "../shared/animation/hoverGrow";
 import NewMore from "../entities/community/more/NewMore";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function CommunityNewMore(){
+
+  const navigate = useNavigate('');
 
     return(
         <div style={{position: "relative", width:"100%", position:"relative"}}>
         <Header/>
             <NewMore/>
-            <FloatingWrap style={{maxWidth:"440px"}}><Img src={floating}/></FloatingWrap>
+            <FloatingWrap style={{maxWidth:"440px"}} onClick={()=>Navigate('/community-writing')}><Img src={floating}/></FloatingWrap>
         <Nav/>
         </div>
     );
