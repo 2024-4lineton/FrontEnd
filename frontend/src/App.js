@@ -18,6 +18,7 @@ import BusinessSellMore from "./pages/BusinessSellMore";
 import BusinessPurchaseMore from "./pages/BusinessPurchaseMore";
 import CommunityWriting from "./pages/CommunityWriting";
 import Brand from "./pages/Brand";
+import SellDetail from "./pages/SellDetail";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
       <Route path="/business-purchase-more" element={<BusinessPurchaseMore />} />
       <Route path="/community-writing" element={<CommunityWriting />} />
       <Route path="/brand" element={<Brand />} />
+      <Route path="/sell-detail" element={<SellDetail />} />
     </Routes>
   );
 }
