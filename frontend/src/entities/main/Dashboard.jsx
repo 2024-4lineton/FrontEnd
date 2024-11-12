@@ -2,11 +2,13 @@ import styled from "styled-components";
 import potato from '../../assets/Main/potato1.svg';
 import { useState } from "react";
 import {hoverGrow} from '../../shared/animation/hoverGrow';
+import { Navigate, useNavigate, usesNavigate } from "react-router-dom";
 
 export default function Dashboard(){
 
     const [cnt, setCnt] = useState(0);
-
+    const navigate = useNavigate("/");
+    
     return(
         <Wrapper>
             <Content>
@@ -15,7 +17,7 @@ export default function Dashboard(){
                 <Comment>
                     <Title>이번 달 감자를 {cnt}개 수확했어요! </Title>
                     <Subtitle>감자는 구매 활동을 통해 획득 가능해요.</Subtitle>
-                    <Button>나의 활동 보러가기</Button>
+                    <Button onClick={()=>navigate('/helfoome')}>나의 활동 보러가기</Button>
                 </Comment>
 
             </Content>

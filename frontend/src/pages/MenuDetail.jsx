@@ -31,10 +31,14 @@ export default function MenuDetail(){
 
     useEffect(() => {
         if (isReservationModalOpen) {
-            const timer = setTimeout(closeReservationModal, 3000);
-            return () => clearTimeout(timer);
+          const timer = setTimeout(() => {
+            closeReservationModal();
+            navigate('/');
+          }, 3000);
+    
+          return () => clearTimeout(timer);
         }
-    }, [isReservationModalOpen]);
+      }, [isReservationModalOpen, navigate]);
 
     return(
     <Wrapper>
