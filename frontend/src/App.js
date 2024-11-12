@@ -2,12 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import TraditionalMarket from "./pages/TraditionalMarket";
 import TraditionalMarketDetail from "./pages/TraditionalMarketDetail";
-import StreetMarket from './pages/StreetMarket';
+import StreetMarket from "./pages/StreetMarket";
 import MenuDetail from "./pages/MenuDetail";
 import Cart from "./pages/CartPage";
 import MarketRegistration from "./pages/MarketRegistration";
 import CompanyCertification from "./pages/CompanyCertification";
 import Sell from "./pages/Sell";
+import styled from "styled-components";
+import Login from "./pages/Login";
 import Helfoome from "./pages/Helfoome";
 import Community from "./pages/Community";
 
@@ -25,8 +27,15 @@ function App() {
       <Route path="/sell" element={<Sell/>}/>
       <Route path="/helfoome" element={<Helfoome/>}/>
       <Route path="/community" element={<Community/>}/>
+       <Route path="/Login" element={<Login />} />
     </Routes>
   );
 }
-
 export default App;
+
+const Wrapper = styled.div`
+  position: relative;
+  width: 440px;
+  margin: 0 auto;
+  min-height: 100vh;
+`;
