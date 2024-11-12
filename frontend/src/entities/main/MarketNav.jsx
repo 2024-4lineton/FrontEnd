@@ -16,13 +16,13 @@ export default function MarketNav(){
         <Wrapper>
             <LocationContainer>
             <Location>{location}</Location>
-                <Icon src={icon}></Icon>
+                
                 
             </LocationContainer>
             <NavContainer>
                 <NavIcon src={market1} onClick={()=>navigate('/traditional-market')}/>
                 <NavIcon src={market2} onClick={()=>navigate('/street-market')}/>
-                <NavIcon src={market3}/>
+                <NavIcon src={market3} onClick={()=>navigate('/brand')}/>
             </NavContainer>
         </Wrapper>
     );

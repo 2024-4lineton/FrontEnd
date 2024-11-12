@@ -5,7 +5,7 @@ import Title from "../entities/streetMarket/Title";
 import { useState } from "react";
 import MarketDetailContent from "../entities/traditionalMarket/detail/MarketDetailContent";
 
-export default function StreetMarket() {
+export default function Brand() {
   const [selected, setSelected] = useState("할인순");
 
   const handleClick = (buttonName) => {
@@ -16,7 +16,7 @@ export default function StreetMarket() {
     <>
       <Wrapper>
         <Header />
-        <Title />
+        <MarketName>브랜드</MarketName>
         <NavContainer>
           <NavButton
             onClick={() => handleClick("할인순")}
@@ -51,10 +51,19 @@ export default function StreetMarket() {
   );
 }
 
+const MarketName = styled.div`
+color: #333;
+font-family: Pretendard;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+margin: 1.5rem 0 0 1rem;
+`
+
 const Wrapper = styled.div`
   position: relative;
   width: 440px;
-  // margin: 0 auto;
   height: 100vh;
 `;
 
