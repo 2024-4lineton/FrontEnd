@@ -11,31 +11,25 @@ import Sell from "./pages/Sell";
 import styled from "styled-components";
 import Login from "./pages/Login";
 import Helfoome from "./pages/Helfoome";
+import Community from "./pages/Community";
 
 function App() {
   return (
-    <Wrapper>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/traditional-market" element={<TraditionalMarket />} />
-        <Route
-          path="/traditional-detail"
-          element={<TraditionalMarketDetail />}
-        />
-        <Route path="/street-market" element={<StreetMarket />} />
-        <Route path="/menu-detail" element={<MenuDetail />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/market-registration" element={<MarketRegistration />} />
-        <Route
-          path="/company-certification"
-          element={<CompanyCertification />}
-        />
-        <Route path="/sell" element={<Sell />} />
-        <Route path="/helfoome" element={<Helfoome/>}/>
-        <Route path="/Login" element={<Login />} />
-      </Routes>
-    </Wrapper>
-  )
+    <Routes>
+      <Route path="/" element={<Main />}/>
+      <Route path="/traditional-market" element={<TraditionalMarket/>}/>
+      <Route path="/traditional-detail" element={<TraditionalMarketDetail/>}/>
+      <Route path="/street-market" element={<StreetMarket/>}/>
+      <Route path="/menu-detail" element={<MenuDetail/>}/>
+      <Route path="/cart" element={<Cart/>}/>
+      <Route path="/market-registration" element={<MarketRegistration/>}/>
+      <Route path="/company-certification" element={<CompanyCertification/>}/>
+      <Route path="/sell" element={<Sell/>}/>
+      <Route path="/helfoome" element={<Helfoome/>}/>
+      <Route path="/community" element={<Community/>}/>
+       <Route path="/Login" element={<Login />} />
+    </Routes>
+  );
 }
 export default App;
 

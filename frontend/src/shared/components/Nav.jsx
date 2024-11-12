@@ -43,7 +43,8 @@ padding: 0 1.5rem;
 display: flex;
 justify-content: space-between;
 align-items: center;
-width: 440px;
+max-width: 440px;
+width: 100%;
 position: fixed;
 bottom: 0
 `
