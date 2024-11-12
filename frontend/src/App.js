@@ -12,6 +12,10 @@ import styled from "styled-components";
 import Login from "./pages/Login";
 import Helfoome from "./pages/Helfoome";
 import Community from "./pages/Community";
+import CommunityPopularMore from "./pages/CommunityPopularMore";
+import CommunityNewMore from "./pages/CommunityNewMore";
+import BusinessSellMore from "./pages/BusinessSellMore";
+import BusinessPurchaseMore from "./pages/BusinessPurchaseMore";
 
 function App() {
   return (
@@ -27,7 +31,11 @@ function App() {
       <Route path="/sell" element={<Sell/>}/>
       <Route path="/helfoome" element={<Helfoome/>}/>
       <Route path="/community" element={<Community/>}/>
-       <Route path="/Login" element={<Login />} />
+      <Route path="/Login" element={<Login />} />
+      <Route path="/community-popular-more" element={<CommunityPopularMore />} />
+      <Route path="/community-new-more" element={<CommunityNewMore />} />
+      <Route path="/business-sell-more" element={<BusinessSellMore />} />
+      <Route path="/business-purchase-more" element={<BusinessPurchaseMore />} />
     </Routes>
   );
 }
