@@ -1,8 +1,13 @@
+import { useState } from "react";
 import AddInfoHeader from "./AddInfoHeader";
-import { AddInfoExplainText, AddInfoPageNumber, AddInfoTitleContainer, AddInfoTitleText, AddInfoTitleTextContainer, AddInfoWrapper } from "./AddInfoStyle";
+import AddInfoNextButton from "./AddInfoNextButton";
+import { AddInfoExplainText, AddInfoFooter, AddInfoPageNumber, AddInfoTitleContainer, AddInfoTitleText, AddInfoTitleTextContainer, AddInfoWrapper } from "./AddInfoStyle";
 import { useLocation } from "react-router-dom";
+import AccountModify from "./AccountModify";
+import LogOut from "./LogOut";
 
 export default function AddInfoFrame(props) {
+  const [allSelected, setAllSelected] = useState(false);
   const location = useLocation();
   let pageNumber = 1;
 
@@ -27,6 +32,11 @@ export default function AddInfoFrame(props) {
           <AddInfoPageNumber>{pageNumber}/3</AddInfoPageNumber>
         </AddInfoTitleContainer>
         {props.children}
+        <AddInfoFooter>
+          <AddInfoNextButton allSelected={allSelected} />
+          <AccountModify />
+          <LogOut />
+        </AddInfoFooter>
       </AddInfoWrapper>
     </>
   )
