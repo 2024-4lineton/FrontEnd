@@ -20,6 +20,7 @@ import CommunityWriting from "./pages/CommunityWriting";
 import Brand from "./pages/Brand";
 import AddInfoPage1 from "./pages/addInfoPage/AddInfoPage1";
 import SellDetail from "./pages/SellDetail";
+import MyPage from "./pages/MyPage";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
       <Route path="/community-writing" element={<CommunityWriting />} />
       <Route path="/brand" element={<Brand />} />
       <Route path="/sell-detail" element={<SellDetail />} />
+      <Route path="/mypage" element={<MyPage />} />
     </Routes>
   );
 }

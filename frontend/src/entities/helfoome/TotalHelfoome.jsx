@@ -7,7 +7,7 @@ export default function TotalHelfoome(){
     const [total, setTotal] = useState("0.4");
     const [cnt, setCnt] = useState("4");
     const [last, setLast] = useState("1.5");
-    const progressPercentage = Math.min((total / 1) * 100, 100); // 우선 1Kg 목표를 기준으로 계산
+    const progressPercentage = Math.min((total / 1) * 100, 100);
 
     return(
     <Wrapper>
@@ -38,7 +38,7 @@ margin-top: 1rem;
 const ContentContainer = styled.div`
 width: 100%;
 border-radius: 1rem;
-background: #FFF;
+background: #FAFBFC;
 height: 8.75rem;
 display: flex;
 flex-direction: column;
