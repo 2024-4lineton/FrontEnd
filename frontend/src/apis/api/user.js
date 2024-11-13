@@ -1,6 +1,6 @@
-// 사용자 여부 확인
-
 import { defaultApi } from "../utils/Instance"
+
+// 사용자 여부 확인
 
 export const getUser = async ({token}) => {
   try {
