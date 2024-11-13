@@ -21,11 +21,5 @@ margin: 1.5rem 0 0 1rem;
     display: flex;
     align-items: center;
     cursor: pointer;
-    gap: 
-`
 
-
-const Icon = styled.img`
-    width: 1.5rem;
-    height: 1.25rem;
 `

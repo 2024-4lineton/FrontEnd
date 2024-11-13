@@ -1,6 +1,8 @@
+import axios from "axios";
+
 const BASE_URL = "https://metalog.store";
 
-const defaultApi = axios.create({
+export const defaultApi = axios.create({
   baseURL: BASE_URL,
   headers: {
       "Content-Type": "application/json",

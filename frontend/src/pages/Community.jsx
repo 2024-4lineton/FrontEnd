@@ -6,10 +6,12 @@ import Nav from "../shared/components/Nav";
 import floating from '../assets/Community/floating.svg';
 import { useState } from "react";
 import { hoverGrow } from "../shared/animation/hoverGrow";
+import { useNavigate } from "react-router-dom";
 
 export default function Community(){
 
     const [selectedBoard, setSelectedBoard] = useState("자유");
+    const navigate = useNavigate('/');
 
     return(
         <div style={{position: "relative", width:"100%", position:"relative"}}>
@@ -31,7 +33,7 @@ export default function Community(){
 
             {selectedBoard === "자유" && <Free />}
             {selectedBoard === "기업" && <Company />}
-            <FloatingWrap style={{maxWidth:"440px"}}><Img src={floating}/></FloatingWrap>
+            <FloatingWrap style={{maxWidth:"440px"}} onClick={()=>navigate('/community-writing')}><Img src={floating}/></FloatingWrap>
         <Nav/>
         </div>
     );

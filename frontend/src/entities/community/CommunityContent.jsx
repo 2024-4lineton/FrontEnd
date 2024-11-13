@@ -38,6 +38,7 @@ const Wrapper = styled.div`
     padding-right: 0.69rem;
     gap: 1rem;
     align-items: center;
+    cursor: pointer;
 `
 
 const Container = styled.div`

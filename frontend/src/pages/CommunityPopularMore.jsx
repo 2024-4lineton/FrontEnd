@@ -4,14 +4,17 @@ import Nav from "../shared/components/Nav";
 import floating from '../assets/Community/floating.svg';
 import { hoverGrow } from "../shared/animation/hoverGrow";
 import PopularMore from "../entities/community/more/PopularMore";
+import { useNavigate } from "react-router-dom";
 
 export default function CommunityPopularMore(){
+
+  const navigate = useNavigate('');
 
     return(
         <div style={{position: "relative", width:"100%", position:"relative"}}>
         <Header/>
             <PopularMore/>
-            <FloatingWrap style={{maxWidth:"440px"}}><Img src={floating}/></FloatingWrap>
+            <FloatingWrap style={{maxWidth:"440px"}} onClick={()=>navigate('/community-writing')}><Img src={floating}/></FloatingWrap>
         <Nav/>
         </div>
     );

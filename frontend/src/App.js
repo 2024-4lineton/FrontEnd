@@ -16,6 +16,10 @@ import CommunityPopularMore from "./pages/CommunityPopularMore";
 import CommunityNewMore from "./pages/CommunityNewMore";
 import BusinessSellMore from "./pages/BusinessSellMore";
 import BusinessPurchaseMore from "./pages/BusinessPurchaseMore";
+import CommunityWriting from "./pages/CommunityWriting";
+import Brand from "./pages/Brand";
+import AddInfoPage1 from "./pages/addInfoPage/AddInfoPage1";
+import SellDetail from "./pages/SellDetail";
 
 function App() {
   return (
@@ -32,10 +36,14 @@ function App() {
       <Route path="/helfoome" element={<Helfoome/>}/>
       <Route path="/community" element={<Community/>}/>
       <Route path="/Login" element={<Login />} />
+      <Route path="AddInfo1" element={<AddInfoPage1 />} />
       <Route path="/community-popular-more" element={<CommunityPopularMore />} />
       <Route path="/community-new-more" element={<CommunityNewMore />} />
       <Route path="/business-sell-more" element={<BusinessSellMore />} />
       <Route path="/business-purchase-more" element={<BusinessPurchaseMore />} />
+      <Route path="/community-writing" element={<CommunityWriting />} />
+      <Route path="/brand" element={<Brand />} />
+      <Route path="/sell-detail" element={<SellDetail />} />
     </Routes>
   );
 }
