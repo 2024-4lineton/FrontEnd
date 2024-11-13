@@ -1,6 +1,7 @@
 
 import Company from "../entities/mypage/Company";
 import Normal from "../entities/mypage/Normal";
+import { useState } from "react";
 
 export default function MyPage(){
 
