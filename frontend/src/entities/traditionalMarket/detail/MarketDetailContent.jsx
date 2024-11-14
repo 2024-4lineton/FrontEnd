@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 import Menu from './Menu';
 
-export default function MarketDetailContent(){
+export default function MarketDetailContent({market}){
     return(
     <Wrapper>
-        <Menu/>
-        <Menu/>
-        <Menu/>
-        <Menu/>
-        <Menu/>
-        <Menu/>
-        <Menu/>
-        <Menu/>
+        {market.map((item, index) => {
+          return <Menu key={index} item={item} />
+        })}
     </Wrapper>
     );
 }

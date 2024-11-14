@@ -5,10 +5,10 @@ export default function List({item, onClick}){
 
     return(
     <Wrapper onClick={onClick}>
-        <Img src={item.imageUrl}/>
+        <Img src={item.imgUrl}/>
         <Content>
             <Name>{item.shopName}</Name>
-            <Intro>인스타 맛집들이 가득 모여있는 {item.shopName}</Intro>
+            <Intro>{item.description} {item.shopName}</Intro>
             <Info>
                 <div>{item.distance}</div>
                 <div>|</div>
