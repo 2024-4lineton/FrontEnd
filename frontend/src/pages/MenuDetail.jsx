@@ -12,6 +12,9 @@ export default function MenuDetail(){
     const navigate = useNavigate('');
     const [isCartModalOpen, setIsCartModalOpen] = useState(false);
     const [isReservationModalOpen, setIsReservationModalOpen] = useState(false);
+    const [origin, setOrigin] = useState("5,000");
+    const [price, setPrice] = useState("2,500");
+    const [sale, setSale] = useState("50");
 
     const openCartModal = () => {
         setIsCartModalOpen(true);
@@ -57,8 +60,9 @@ export default function MenuDetail(){
             <MenuName>원조김밥</MenuName>
             <Container>
                <PriceContainer>
-                    <Sale>60%</Sale>
-                    <Price>2,000원</Price>
+                    <Sale>{sale}%</Sale>
+                    <Origin>{origin}</Origin>
+                    <Price>{price}원</Price>
                 </PriceContainer> 
                 <LeftCnt>* 잔여수량 2개</LeftCnt>
             </Container>
@@ -186,4 +190,9 @@ border: 1px solid #EEE;
 background: #FFF;
 color: #577D58;
 
+`
+
+const Origin = styled(Font)`
+align-self: flex-end; 
+text-decoration: line-through;
 `
