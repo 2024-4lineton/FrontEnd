@@ -4,7 +4,7 @@ import cart from "../../assets/Main/cartIcon.svg";
 import { hoverGrow } from "../../shared/animation/hoverGrow";
 import { useState, useEffect } from "react";
 
-export default function LastChanceContainer(){
+export default function LastChanceContainer({item}){
 
     const [timeLeft, setTimeLeft] = useState("");
 
@@ -33,16 +33,16 @@ export default function LastChanceContainer(){
     return(
         <Wrapper>
             <MenuContainer>
-                <MenuImg src={menu1}/>
+                <MenuImg src={item.imgUrl}/>
                 <Time>{timeLeft}</Time>
             </MenuContainer>
 
             <ContentContainer>
-                <MarketName>역전우동 성신여대점</MarketName>
-                <MenuName>옛날우동</MenuName>
+                <MarketName>{item.shopName}</MarketName>
+                <MenuName>{item.productName}</MenuName>
                 <PriceContainer>
-                    <Sale>60%</Sale>
-                    <Price>4,000원</Price>
+                    <Sale>{item.discountPercent}%</Sale>
+                    <Price>{item.discountPrice}</Price>
                 </PriceContainer>
                 <Button>
                     <Cart src={cart}/>
