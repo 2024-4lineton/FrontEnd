@@ -3,6 +3,8 @@ import AddInfoFrame from "../../entities/addInfo/AddInfoFrame";
 import {
   AddInfoCategoryText,
   UserInputField,
+  ButtonContainer,
+  OptionButton,
 } from "../../entities/addInfo/AddInfoStyle";
 import ProfileImg from "../../entities/addInfo/ProfileImg";
 import { useState } from "react";
@@ -10,10 +12,18 @@ import axios from "axios";
 import { defaultApi } from "../../apis/utils/Instance";
 import AvailableImg from "../../assets/AddInfo/availableImg.svg";
 import UnavailableImg from "../../assets/AddInfo/unavailableImg.svg";
+import { hoverGrow } from "../../shared/animation/hoverGrow";
 
 export default function AddInfoPage1() {
   const [duplicationNickname, setDuplicationNickname] = useState(false);
-  const [nickname, setNickname] = useState();
+  const [nickname, setNickname] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [birth, setBirth] = useState("");
+  const [selectedGender, setSelectedGender] = useState(null);
+
+  const handleGenderSelect = (gender) => {
+    setSelectedGender(gender);
+  };
 
   const confirmDuplicationNickname = async () => {
     try {
@@ -39,6 +49,14 @@ export default function AddInfoPage1() {
     setNickname(e.target.value);
   };
 
+  const phoneNumberHandler = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+
+  const userBirthHandler = (e) => {
+    setBirth(e.target.value);
+  };
+
   return (
     <>
       <AddInfoFrame>
@@ -60,18 +78,54 @@ export default function AddInfoPage1() {
             {nickname && duplicationNickname ? (
               <InformAvailabeContainer>
                 <img src={AvailableImg} alt="availableImg" />
-                <InformAvailabeText style={{color: "#2D2F2D"}}>
+                <InformAvailabeText style={{ color: "#2D2F2D" }}>
                   사용 가능한 닉네임이에요.
                 </InformAvailabeText>
               </InformAvailabeContainer>
             ) : (
               <InformAvailabeContainer>
                 <img src={UnavailableImg} alt="availableImg" />
-                <InformAvailabeText style={{color: "#D24C49"}}>
+                <InformAvailabeText style={{ color: "#D24C49" }}>
                   중복된 닉네임이에요. 다른 닉네임을 사용해주세요.
                 </InformAvailabeText>
               </InformAvailabeContainer>
             )}
+
+            <AddInfoCategoryText>전화번호</AddInfoCategoryText>
+            <NickNameInputContainer>
+              <NickNameInputField
+                placeholder="- 없이 숫자만 입력해주세요."
+                value={phoneNumber}
+                style={{ width: "100%" }}
+                onChange={(e) => phoneNumberHandler(e)}
+              />
+            </NickNameInputContainer>
+
+            <AddInfoCategoryText>생년월일</AddInfoCategoryText>
+            <NickNameInputContainer>
+              <NickNameInputField
+                placeholder="YYYY/MM/DD"
+                value={birth}
+                onChange={(e) => userBirthHandler(e)}
+                style={{ width: "100%" }}
+              />
+            </NickNameInputContainer>
+
+            <AddInfoCategoryText>성별</AddInfoCategoryText>
+            <ButtonContainer>
+              <OptionButton
+                isSelected={selectedGender === "남성"}
+                onClick={() => handleGenderSelect("남성")}
+              >
+                남성
+              </OptionButton>
+              <OptionButton
+                isSelected={selectedGender === "여성"}
+                onClick={() => handleGenderSelect("여성")}
+              >
+                여성
+              </OptionButton>
+            </ButtonContainer>
           </UserInfoCategoryContainer>
         </UserInfoInputContainer>
       </AddInfoFrame>
@@ -97,10 +151,10 @@ const NickNameInputContainer = styled.div`
 `;
 
 const NickNameInputField = styled.input`
-  width: 70%;
+  width: 78%;
   padding-left: 0.8rem;
-  padding-top: 0.8rem;
-  padding-bottom: 0.8rem;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
   border-radius: 0.5rem;
   background: #fff;
   border: none;
@@ -124,6 +178,8 @@ const DuplicationButton = styled.div`
   justify-content: center;
   align-items: center;
   width: 5rem;
+  cursor: pointer;
+  ${hoverGrow}
 `;
 
 const DuplicationText = styled.p`
