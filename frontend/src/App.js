@@ -22,6 +22,7 @@ import AddInfoPage1 from "./pages/addInfoPage/AddInfoPage1";
 import SellDetail from "./pages/SellDetail";
 import MyPage from "./pages/MyPage";
 import SellList from "./pages/SellList";
+import SellerDetail from "./pages/SellerDetail";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
       <Route path="/sell-detail" element={<SellDetail />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/sell-list" element={<SellList />} />
+      <Route path="/seller-detail" element={<SellerDetail />} />
     </Routes>
   );
 }
