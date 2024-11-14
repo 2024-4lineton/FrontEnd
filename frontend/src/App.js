@@ -21,6 +21,7 @@ import Brand from "./pages/Brand";
 import AddInfoPage1 from "./pages/addInfoPage/AddInfoPage1";
 import SellDetail from "./pages/SellDetail";
 import MyPage from "./pages/MyPage";
+import SellList from "./pages/SellList";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
       <Route path="/brand" element={<Brand />} />
       <Route path="/sell-detail" element={<SellDetail />} />
       <Route path="/mypage" element={<MyPage />} />
+      <Route path="/sell-list" element={<SellList />} />
     </Routes>
   );
 }
