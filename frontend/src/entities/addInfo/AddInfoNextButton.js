@@ -1,10 +1,10 @@
 import styled from "styled-components"
 
-export default function AddInfoNextButton({allSelected}) {
+export default function AddInfoNextButton({allSelected, pageNumber, click}) {
   return (
-    <NextButtonContainer>
+    <NextButtonContainer onClick={click}>
       <NextButton allSelected={allSelected}>
-      <NextButtonText allSelected={allSelected}>다음</NextButtonText>
+      <NextButtonText allSelected={allSelected}>{(pageNumber == 1 || pageNumber == 2) ? "다음" : "완료"}</NextButtonText>
       </NextButton>
     </NextButtonContainer>
   )

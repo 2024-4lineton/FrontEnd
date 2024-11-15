@@ -7,7 +7,6 @@ import AccountModify from "./AccountModify";
 import LogOut from "./LogOut";
 
 export default function AddInfoFrame(props) {
-  const [allSelected, setAllSelected] = useState(false);
   const location = useLocation();
   let pageNumber = 1;
 
@@ -33,7 +32,7 @@ export default function AddInfoFrame(props) {
         </AddInfoTitleContainer>
         {props.children}
         <AddInfoFooter>
-          <AddInfoNextButton allSelected={allSelected} />
+          <AddInfoNextButton allSelected={props.allSelected} pageNumber={pageNumber} click={props.nextButtonHandler} />
           <AccountModify />
           <LogOut />
         </AddInfoFooter>
