@@ -3,11 +3,19 @@ import logo from '../../assets/Header/logo.svg'
 import search from '../../assets/Header/search.svg'
 import bell from '../../assets/Header/bell.svg'
 import cart from '../../assets/Header/cart.svg'
+import noti from '../../assets/Header/noti.svg';
+import { useState,useEffect } from 'react'
 import {useNavigate} from 'react-router-dom';
 
 export default function Header(){
 
-    const navigate=useNavigate("");
+    const navigate = useNavigate();
+    const [notiFlag,setNotiFlag] = useState(0);
+
+    useEffect(() => {
+        const flag = sessionStorage.getItem('notiflag');
+        setNotiFlag(flag);
+    }, []);
 
     return(
     <Wrapper>
@@ -15,10 +23,20 @@ export default function Header(){
         <Logo src={logo} onClick={()=>navigate('/')}/>
 
         <ButtonContainer>
-            <Button src={search}/>
-            <Button src={bell}/>
-            <Button src={cart} onClick={()=>navigate('/cart')}/>
-        </ButtonContainer>
+                <Button src={search} />
+                <Button
+                    src={notiFlag === "1" ? noti : bell}
+                    style={{
+                        width: notiFlag === "1" ? '1.6875rem' : '1.5rem',
+                        height: notiFlag === "1"  ? '1.6875rem' : '1.5rem',
+                    }}
+                    onClick={()=>{sessionStorage.setItem('notiflag','0'); navigate('/notification');}}
+                />
+                <Button
+                    src={cart}
+                    onClick={() => navigate('/cart')}
+                />
+            </ButtonContainer>
 
     </Wrapper>
     );

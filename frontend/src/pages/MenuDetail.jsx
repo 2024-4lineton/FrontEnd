@@ -25,6 +25,7 @@ export default function MenuDetail(){
     };
 
     const openReservationModal = () => {
+        sessionStorage.setItem('notiflag',"1");
         setIsReservationModalOpen(true);
     };
 

@@ -16,7 +16,7 @@ export default function Nav(){
     const isCommunitySelected = location.pathname === '/community' || location.pathname === '/community-popular-more' 
     || location.pathname === '/community-new-more' || location.pathname === '/business-sell-more' || location.pathname === '/business-purchase-more';
     const isLocalSelected = location.pathname === '/traditional-market' || location.pathname === '/traditional-detail'
-            || location.pathname === '/street-market' || location.pathname === '/brand';
+            || location.pathname === '/street-market' || location.pathname === '/brand' || location.pathname === '/notification';
     const isMyPageSelected = location.pathname === '/mypage' || location.pathname === '/sell-list';
 
 
