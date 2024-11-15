@@ -23,6 +23,7 @@ import SellDetail from "./pages/SellDetail";
 import MyPage from "./pages/MyPage";
 import SellList from "./pages/SellList";
 import SellerDetail from "./pages/SellerDetail";
+import Notification from "./pages/Notification";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/sell-list" element={<SellList />} />
       <Route path="/seller-detail" element={<SellerDetail />} />
+      <Route path="/notification" element={<Notification />} />
     </Routes>
   );
 }
