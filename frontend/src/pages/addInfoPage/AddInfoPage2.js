@@ -4,6 +4,8 @@ import { AddInfoCategoryText } from "../../entities/addInfo/AddInfoStyle";
 import { useEffect, useState } from "react";
 import areaIcon from "../../assets/AddInfo/areaIcon.svg";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { userInfo } from "../../shared/state/userInfo";
 
 const foodCategory = ["한식", "양식", "일식", "중식", "분식", "건강식", "간편식", "디저트"];
 
@@ -11,6 +13,7 @@ export default function AddInfoPage2() {
   const [area, setArea] = useState("");
   const [selectedFood, setSelectedFood] = useState([]);
   const [allSelected, setAllSelected] = useState(false);
+  const [user, setUser] = useRecoilState(userInfo);
   const navigate = useNavigate();
 
   const getAddressFromCoords = async (lat, long) => {
@@ -59,7 +62,15 @@ export default function AddInfoPage2() {
   }, [selectedFood, area]);
 
   const nextButtonHandler = () => {
-    navigate("/AddInfo3");
+    if(allSelected) {
+      setUser((prev) => ({
+        ...prev,
+        activityLocation: area,
+        foodCategory: selectedFood.join()
+      }))
+
+      navigate("/AddInfo3");
+    }
   }
 
   return (

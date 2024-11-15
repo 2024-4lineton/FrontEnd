@@ -14,6 +14,9 @@ import { defaultApi } from "../../apis/utils/Instance";
 import AvailableImg from "../../assets/AddInfo/availableImg.svg";
 import UnavailableImg from "../../assets/AddInfo/unavailableImg.svg";
 import { hoverGrow } from "../../shared/animation/hoverGrow";
+import defaultProfileImg from "../../assets/AddInfo/defaultProfileImg.svg";
+import { useRecoilState } from "recoil";
+import { userInfo } from "../../shared/state/userInfo";
 
 export default function AddInfoPage1() {
   const [duplicationNickname, setDuplicationNickname] = useState(null);
@@ -22,7 +25,22 @@ export default function AddInfoPage1() {
   const [birth, setBirth] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [allSelected, setAllSelected] = useState(false);
+  const [profileImg, setProfileImg] = useState(defaultProfileImg);
+  const [user, setUser] = useRecoilState(userInfo);
   const navigate = useNavigate();
+
+  const imgUploadHandler = (e) => {
+    const imgFile = e.target.files[0];
+    if(imgFile) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => { // 콜백함수이기 떄문에 먼저 등록
+        setProfileImg(reader.result)
+      }
+
+      reader.readAsDataURL(imgFile);
+    }
+  }
 
   const handleGenderSelect = (gender) => {
     setSelectedGender(gender);
@@ -40,7 +58,7 @@ export default function AddInfoPage1() {
         }
       );
       console.log(response);
-      if (response.status === 200) {
+      if (response.data === true) {
         setDuplicationNickname(true);
       }
     } catch (e) {
@@ -62,7 +80,18 @@ export default function AddInfoPage1() {
   };
 
   const nextButtonHandler = () => {
-    navigate("/AddInfo2");
+    if(allSelected) {
+      setUser((prevUser) => ({
+        ...prevUser,
+        profileImg: profileImg,
+        nickname: nickname,
+        phone: phoneNumber,
+        birth: birth,
+        gender: selectedGender,
+      }));
+
+      navigate("/AddInfo2");
+    }
   }
 
   useEffect(() => {
@@ -76,7 +105,7 @@ export default function AddInfoPage1() {
   return (
     <>
       <AddInfoFrame allSelected={allSelected} nextButtonHandler={nextButtonHandler}>
-        <ProfileImg />
+        <ProfileImg profileImg={profileImg} imgUploadHandler={imgUploadHandler} />
         <UserInfoInputContainer>
           <UserInfoCategoryContainer>
             <AddInfoCategoryText>닉네임</AddInfoCategoryText>

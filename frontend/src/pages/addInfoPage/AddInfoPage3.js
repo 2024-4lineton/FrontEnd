@@ -4,6 +4,11 @@ import NonCheckImg from "../../assets/AddInfo/nonCheckIcon.svg";
 import CheckedImg from "../../assets/AddInfo/checkedIcon.svg"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { userInfo } from "../../shared/state/userInfo";
+import { defaultApi } from "../../apis/utils/Instance";
+import { dummyToken } from "../../shared/state/token";
+import defaultProfileImg from "../../assets/AddInfo/defaultProfileImg.svg";
 
 export default function AddInfoPage3() {
   const [allAgree, setAllAgree] = useState(false);
@@ -11,6 +16,8 @@ export default function AddInfoPage3() {
   // const [privacyPolicy, setPrivacyPolicy] = useState(true);
   // const [LBS,SetLBS] = useState(true);
   const [marketingPolicy, setMarketingPolicy] = useState(false);
+  const [user, setUser] = useRecoilState(userInfo);
+  const token = useRecoilValue(dummyToken);
   const navigate = useNavigate();
 
   const selectAllAgree = () => {
@@ -20,13 +27,60 @@ export default function AddInfoPage3() {
   useEffect(() => {
     if(allAgree) {
       setMarketingPolicy(true);
+      setUser((prev) => ({
+        ...prev,
+        marketingPolicy: true
+      }))
     } else {
       setMarketingPolicy(false);
+      setUser((prev) => ({
+        ...prev,
+        marketingPolicy: false
+      }))
     }
   }, [allAgree]);
 
-  const nextButtonHandler = () => {
-    navigate("/");
+  const postUserInfoHandler = async () => {
+    const formData = new FormData();
+
+    // Recoil 상태(userInfo)에서 데이터 추가
+    formData.append("nickname", user.nickname);
+    formData.append("phone", user.phone);
+    formData.append("birth", user.birth);
+    formData.append("gender", user.gender);
+    formData.append("activityLocation", user.activityLocation || "");
+    formData.append("foodCategory", user.foodCategory || "");
+    formData.append("privacyPolicy", user.privacyPolicy);
+    formData.append("marketingPolicy", user.marketingPolicy);
+    formData.append("ToS", user.ToS);
+    formData.append("LBS", user.LBS);
+
+    if (user.profileImg && user.profileImg !== defaultProfileImg) {
+      const imgFile = await fetch(user.profileImg).then((res) => res.blob());
+      formData.append("profileImg", imgFile, "profile.png");
+    }
+
+    const result = await defaultApi.post(`/api/userInfo/register`, formData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    },
+  });
+
+    return result;
+  }
+
+  const nextButtonHandler = async () => {
+    try {
+      const response = await postUserInfoHandler();
+      console.log(response);
+
+      if(response.status === 200) {
+        navigate("/");
+      }
+    } catch(error) {
+      console.error(error);
+    }
   }
 
   return (
