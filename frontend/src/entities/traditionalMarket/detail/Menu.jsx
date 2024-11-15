@@ -2,27 +2,27 @@ import styled from "styled-components";
 import menu from '../../../assets/TraditionalMarket/menu.svg';
 import { useNavigate } from "react-router-dom";
 
-export default function Menu(){
+export default function Menu({item}){
 
     const navigate = useNavigate("");
         
     return(
     <Wrapper>
 
-        <Img src={menu}/>
+        <Img src={item.imgUrl}/>
 
         <Content onClick={()=>navigate('/menu-detail')}>
-            <Name>돈암김밥</Name>
-            <MenuName>원조김밥</MenuName>
+            <Name>{item.shop}</Name>
+            <MenuName>{item.productName}</MenuName>
 
             <Container>
-                <Sale>50%</Sale>
-                <Price>1,500원</Price>
+                <Sale>{item.discountPercent}%</Sale>
+                <Price>{item.price}</Price>
             </Container>
 
             <Info>
-                <Count>잔여수량 1개</Count>
-                <Location>800m 이내</Location>
+                <Count>잔여수량 {item.quantity}개</Count>
+                <Location>{item.distance}m 이내</Location>
             </Info>
         </Content>
 

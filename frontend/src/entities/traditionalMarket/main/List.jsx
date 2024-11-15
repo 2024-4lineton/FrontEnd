@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
-export default function List({name, img, onClick}){
+export default function List({item, onClick}){
 
 
     return(
     <Wrapper onClick={onClick}>
-        <Img src={img}/>
+        <Img src={item.imgUrl}/>
         <Content>
-            <Name>{name}</Name>
-            <Intro>인스타 맛집들이 가득 모여있는 {name}</Intro>
+            <Name>{item.shopName}</Name>
+            <Intro>{item.description} {item.shopName}</Intro>
             <Info>
-                <div>800m</div>
+                <div>{item.distance}</div>
                 <div>|</div>
-                <div>상품 2개</div>
+                <div>상품 {item.productCount}개</div>
             </Info>
         </Content>
     </Wrapper>
