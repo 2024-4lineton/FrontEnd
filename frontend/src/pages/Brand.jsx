@@ -2,15 +2,50 @@ import styled from "styled-components";
 import Header from "../shared/components/Header";
 import Nav from "../shared/components/Nav";
 import Title from "../entities/streetMarket/Title";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MarketDetailContent from "../entities/traditionalMarket/detail/MarketDetailContent";
+import { useRecoilValue } from "recoil";
+import { dummyToken } from "../shared/state/token";
+import { getProductList } from "../apis/api/productList";
 
 export default function Brand() {
-  const [selected, setSelected] = useState("할인순");
+  const [selected, setSelected] = useState("단거리");
+  const [market, setMarket] = useState([]);
+  const token = useRecoilValue(dummyToken);
 
   const handleClick = (buttonName) => {
     setSelected(buttonName);
   };
+
+  useEffect(() => {
+    let filter;
+    if (selected === "단거리") {
+      filter = 0;
+    } else if (selected === "최저가") {
+      filter = 1;
+    } else if (selected === "최고할인") {
+      filter = 2;
+    }
+    const getMarketHandler = async () => {
+      try {
+        const response = await getProductList({
+          token: token,
+          shopType: 2,
+          sort: filter,
+        });
+
+        console.log(response);
+
+        if (response.status === 200) {
+          setMarket(response.data.productInList);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getMarketHandler();
+  }, [selected, token]);
 
   return (
     <>
@@ -19,27 +54,27 @@ export default function Brand() {
         <MarketName>브랜드</MarketName>
         <NavContainer>
           <NavButton
-            onClick={() => handleClick("할인순")}
-            isSelected={selected === "할인순"}
+            onClick={() => handleClick("단거리")}
+            isSelected={selected === "단거리"}
           >
             할인순
           </NavButton>
           <NavButton
-            onClick={() => handleClick("가까운순")}
-            isSelected={selected === "가까운순"}
+            onClick={() => handleClick("최저가")}
+            isSelected={selected === "최저가"}
           >
             가까운순
           </NavButton>
           <NavButton
-            onClick={() => handleClick("업로드순")}
-            isSelected={selected === "업로드순"}
+            onClick={() => handleClick("최고할인")}
+            isSelected={selected === "최고할인"}
           >
             업로드순
           </NavButton>
         </NavContainer>
 
         <ContentContainer>
-          <MarketDetailContent />
+          <MarketDetailContent market={market} />
         </ContentContainer>
 
         {/* <NavBar>
@@ -52,14 +87,14 @@ export default function Brand() {
 }
 
 const MarketName = styled.div`
-color: #333;
-font-family: Pretendard;
-font-size: 1.25rem;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-margin: 1.5rem 0 0 1rem;
-`
+  color: #333;
+  font-family: Pretendard;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 1.5rem 0 0 1rem;
+`;
 
 const Wrapper = styled.div`
   position: relative;
