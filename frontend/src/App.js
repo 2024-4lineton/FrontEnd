@@ -19,10 +19,12 @@ import BusinessPurchaseMore from "./pages/BusinessPurchaseMore";
 import CommunityWriting from "./pages/CommunityWriting";
 import Brand from "./pages/Brand";
 import AddInfoPage1 from "./pages/addInfoPage/AddInfoPage1";
+import AddInfoPage2 from "./pages/addInfoPage/AddInfoPage2";
 import SellDetail from "./pages/SellDetail";
 import MyPage from "./pages/MyPage";
 import SellList from "./pages/SellList";
 import SellerDetail from "./pages/SellerDetail";
+import AddInfoPage3 from "./pages/addInfoPage/AddInfoPage3";
 import Notification from "./pages/Notification";
 
 function App() {
@@ -40,7 +42,9 @@ function App() {
       <Route path="/helfoome" element={<Helfoome/>}/>
       <Route path="/community" element={<Community/>}/>
       <Route path="/Login" element={<Login />} />
-      <Route path="AddInfo1" element={<AddInfoPage1 />} />
+      <Route path="/AddInfo1" element={<AddInfoPage1 />} />
+      <Route path="/AddInfo2" element={<AddInfoPage2 />} />
+      <Route path="/AddInfo3" element={<AddInfoPage3 />} />
       <Route path="/community-popular-more" element={<CommunityPopularMore />} />
       <Route path="/community-new-more" element={<CommunityNewMore />} />
       <Route path="/business-sell-more" element={<BusinessSellMore />} />

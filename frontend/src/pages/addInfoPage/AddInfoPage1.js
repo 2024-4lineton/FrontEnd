@@ -7,19 +7,40 @@ import {
   OptionButton,
 } from "../../entities/addInfo/AddInfoStyle";
 import ProfileImg from "../../entities/addInfo/ProfileImg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { defaultApi } from "../../apis/utils/Instance";
 import AvailableImg from "../../assets/AddInfo/availableImg.svg";
 import UnavailableImg from "../../assets/AddInfo/unavailableImg.svg";
 import { hoverGrow } from "../../shared/animation/hoverGrow";
+import defaultProfileImg from "../../assets/AddInfo/defaultProfileImg.svg";
+import { useRecoilState } from "recoil";
+import { userInfo } from "../../shared/state/userInfo";
 
 export default function AddInfoPage1() {
-  const [duplicationNickname, setDuplicationNickname] = useState(false);
+  const [duplicationNickname, setDuplicationNickname] = useState(null);
   const [nickname, setNickname] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [birth, setBirth] = useState("");
-  const [selectedGender, setSelectedGender] = useState(null);
+  const [selectedGender, setSelectedGender] = useState("");
+  const [allSelected, setAllSelected] = useState(false);
+  const [profileImg, setProfileImg] = useState(defaultProfileImg);
+  const [user, setUser] = useRecoilState(userInfo);
+  const navigate = useNavigate();
+
+  const imgUploadHandler = (e) => {
+    const imgFile = e.target.files[0];
+    if(imgFile) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => { // 콜백함수이기 떄문에 먼저 등록
+        setProfileImg(reader.result)
+      }
+
+      reader.readAsDataURL(imgFile);
+    }
+  }
 
   const handleGenderSelect = (gender) => {
     setSelectedGender(gender);
@@ -37,7 +58,7 @@ export default function AddInfoPage1() {
         }
       );
       console.log(response);
-      if (response.status === 200) {
+      if (response.data === true) {
         setDuplicationNickname(true);
       }
     } catch (e) {
@@ -47,6 +68,7 @@ export default function AddInfoPage1() {
 
   const userNicknameHandler = (e) => {
     setNickname(e.target.value);
+    setDuplicationNickname(null);
   };
 
   const phoneNumberHandler = (e) => {
@@ -57,10 +79,33 @@ export default function AddInfoPage1() {
     setBirth(e.target.value);
   };
 
+  const nextButtonHandler = () => {
+    if(allSelected) {
+      setUser((prevUser) => ({
+        ...prevUser,
+        profileImg: profileImg,
+        nickname: nickname,
+        phone: phoneNumber,
+        birth: birth,
+        gender: selectedGender,
+      }));
+
+      navigate("/AddInfo2");
+    }
+  }
+
+  useEffect(() => {
+    if(nickname.length>0 && duplicationNickname && (phoneNumber.length>=7 && phoneNumber.length<=11) && birth.length>0 && selectedGender.length>0) {
+      setAllSelected(true);
+    } else {
+      setAllSelected(false);
+    }
+  }, [nickname, duplicationNickname, phoneNumber, birth, selectedGender]);
+
   return (
     <>
-      <AddInfoFrame>
-        <ProfileImg />
+      <AddInfoFrame allSelected={allSelected} nextButtonHandler={nextButtonHandler}>
+        <ProfileImg profileImg={profileImg} imgUploadHandler={imgUploadHandler} />
         <UserInfoInputContainer>
           <UserInfoCategoryContainer>
             <AddInfoCategoryText>닉네임</AddInfoCategoryText>
@@ -75,7 +120,7 @@ export default function AddInfoPage1() {
                 <DuplicationText>중복 확인</DuplicationText>
               </DuplicationButton>
             </NickNameInputContainer>
-            {nickname && duplicationNickname ? (
+            {(nickname.length>0 && duplicationNickname !== null) && (nickname && duplicationNickname ? (
               <InformAvailabeContainer>
                 <img src={AvailableImg} alt="availableImg" />
                 <InformAvailabeText style={{ color: "#2D2F2D" }}>
@@ -89,25 +134,23 @@ export default function AddInfoPage1() {
                   중복된 닉네임이에요. 다른 닉네임을 사용해주세요.
                 </InformAvailabeText>
               </InformAvailabeContainer>
-            )}
+            ))}
 
             <AddInfoCategoryText>전화번호</AddInfoCategoryText>
             <NickNameInputContainer>
-              <NickNameInputField
+              <UserInputField
                 placeholder="- 없이 숫자만 입력해주세요."
                 value={phoneNumber}
-                style={{ width: "100%" }}
                 onChange={(e) => phoneNumberHandler(e)}
               />
             </NickNameInputContainer>
 
             <AddInfoCategoryText>생년월일</AddInfoCategoryText>
             <NickNameInputContainer>
-              <NickNameInputField
+              <UserInputField
                 placeholder="YYYY/MM/DD"
                 value={birth}
                 onChange={(e) => userBirthHandler(e)}
-                style={{ width: "100%" }}
               />
             </NickNameInputContainer>
 
