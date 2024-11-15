@@ -59,7 +59,7 @@ export default function AddInfoPage2() {
   }, [selectedFood, area]);
 
   const nextButtonHandler = () => {
-    navigate("/");
+    navigate("/AddInfo3");
   }
 
   return (
