@@ -9,7 +9,7 @@ export default function MyPage(){
 
     return(
     <>
-        {/* <Normal></Normal> */}
-        <Company/>
+        <Normal></Normal>
+        {/* <Company/> */}
     </>);
 }

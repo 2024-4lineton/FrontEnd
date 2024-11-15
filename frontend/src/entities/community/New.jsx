@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import CommunityContent from "./CommunityContent";
 import Footer from "../main/Footer";
-
+import { useNavigate } from "react-router-dom";
 
 export default function New(){
 
+    const navigate = useNavigate('');
+    
     return(
         <>
             <Header>
                 <Title>최신글 💫</Title>
-                <More>더보기 &gt;</More>
+                <More onClick={()=>navigate('/community-new-more')}>더보기 &gt;</More>
             </Header>
             <Content>  
                 <CommunityContent/>

@@ -80,7 +80,7 @@ export default function Sell(){
 
         <ButtonContainer>
             <Cancel isValid={isValid} onClick={isValid ? openModal : null}>취소하기</Cancel>
-            <Register isValid={isValid}>등록하기</Register>
+            <Register isValid={isValid} onClick={()=>navigate('/seller-detail')}>등록하기</Register>
         </ButtonContainer>
     </Wrapper>
     </>);

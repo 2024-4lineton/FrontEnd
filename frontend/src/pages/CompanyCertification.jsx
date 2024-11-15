@@ -4,8 +4,10 @@ import shop from '../assets/CompanyCertification/shopIcon.svg';
 import infoCircle from '../assets/CompanyCertification/infocircle.svg';
 import checkCircle from '../assets/CompanyCertification/checkcircle.svg';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function CompanyCertification() {
+    const navigate = useNavigate('');
     const [input1, setInput1] = useState("");
     const [input2, setInput2] = useState("");
     const [input3, setInput3] = useState("");
@@ -119,7 +121,7 @@ export default function CompanyCertification() {
                 </div>
 
                 <div style={{ display: "flex", position: "absolute", bottom: "0", width: `calc(100% - 2rem)`, justifyContent: "center" }}>
-                    <RegisterButton isActive={isFormValid}>다음</RegisterButton>
+                    <RegisterButton onClick={()=>navigate('/market-registration')}>다음</RegisterButton>
                     <CancelButton onClick={handleCancel}> X 취소하기</CancelButton>
                 </div>
             </Wrapper>
@@ -219,11 +221,14 @@ height: 2.75rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
-color: #999999;
 border-radius: 0.5rem;
-background: #EEE;
-color: "#999999"
-background: "#EEE"
+background: #F07D45;
+text-align: center;
+font-family: Pretendard;
+font-size: 1rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
 `
 
 const CancelButton = styled.div`

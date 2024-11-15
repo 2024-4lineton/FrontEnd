@@ -5,12 +5,14 @@ import pen from '../../assets/MyPage/pen.svg';
 import arrow from '../../assets/MyPage/arrow.svg';
 import Nav from "../../shared/components/Nav";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Company(){
 
     const [profileImg, setProfileImg] = useState(profile);
     const [name, setName] = useState("음치킨");
     const [category, setCategory] = useState("골목시장");
+    const navigate = useNavigate('');
 
     return(
         <>
@@ -32,13 +34,13 @@ export default function Company(){
 
             <NavTitle>정보</NavTitle>
             <NavContent style={{marginBottom:"1.5rem"}}>
-                <div style={{display:"flex", justifyContent:"space-between"}}>
+                <div style={{display:"flex", justifyContent:"space-between", cursor:"pointer"}}>
                 <Font>사업자 정보 수정하기</Font>
                 <img src={arrow}/>
                 </div>
             </NavContent>
             <NavContent style={{marginBottom:"1.5rem"}}>
-                <div style={{display:"flex", justifyContent:"space-between"}}>
+                <div style={{display:"flex", justifyContent:"space-between", cursor:"pointer"}}>
                 <Font>가게 정보 수정하기</Font>
                 <img src={arrow}/>
                 </div>
@@ -46,13 +48,15 @@ export default function Company(){
 
             <NavTitle>판매</NavTitle>
             <NavContent style={{marginBottom:"1.5rem"}}>
-                <div style={{display:"flex", justifyContent:"space-between"}}>
+                <div style={{display:"flex", justifyContent:"space-between", cursor:"pointer"}}
+                    onClick={()=>navigate('/sell')}>
                 <Font>판매글 작성하기</Font>
                 <img src={arrow}/>
                 </div>
             </NavContent>
             <NavContent style={{marginBottom:"1.5rem"}}>
-                <div style={{display:"flex", justifyContent:"space-between"}}>
+                <div style={{display:"flex", justifyContent:"space-between", cursor:"pointer"}}
+                    onClick={()=>navigate('/sell-list')}>
                 <Font>판매 내역 보러가기</Font>
                 <img src={arrow}/>
                 </div>
@@ -60,13 +64,13 @@ export default function Company(){
 
             <NavTitle>커뮤니티</NavTitle>
             <NavContent style={{marginBottom:"1.5rem"}}>
-                <div style={{display:"flex", justifyContent:"space-between"}}>
+                <div style={{display:"flex", justifyContent:"space-between", cursor:"pointer"}}>
                 <Font>작성한 글 보러가기</Font>
                 <img src={arrow}/>
                 </div>
             </NavContent>
             <NavContent style={{marginBottom:"2rem"}}>
-                <div style={{display:"flex", justifyContent:"space-between"}}>
+                <div style={{display:"flex", justifyContent:"space-between", cursor:"pointer"}}>
                 <Font>좋아요 내역 보러가기</Font>
                 <img src={arrow}/>
                 </div>
@@ -74,7 +78,7 @@ export default function Company(){
         </NavContainer>
 
         <Line/>
-        <div style={{padding: "1.25rem 0 0 1rem", marginBottom: "4.375rem"}}>
+        <div style={{padding: "1.25rem 0 0 1rem", marginBottom: "4.375rem", cursor:"pointer"}}>
         <Font style={{marginBottom:"1.25rem"}}>서비스 설정</Font>
             <Content>로그아웃</Content>
             <Content>자주 묻는 질문</Content>

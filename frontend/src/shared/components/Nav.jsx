@@ -30,7 +30,7 @@ export default function Nav(){
             <Icon src={isLocalSelected ? blackpin : pin}/>
             <Option isSelected={isLocalSelected}>내동네</Option>
         </Content>
-        <Content onClick={()=>navigate('/')}>
+        <Content onClick={()=>navigate('/mypage')}>
             <Icon src={isMyPageSelected ? blackuser : user}/>
             <Option isSelected={isMyPageSelected}>마이페이지</Option>
         </Content>

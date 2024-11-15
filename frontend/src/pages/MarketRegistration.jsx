@@ -4,12 +4,13 @@ import profile from '../assets/MarketRegistration/profileImg.svg';
 import Footer from "../entities/main/Footer";
 import check from "../assets/Resgistration/checkcircle.svg";
 import info from "../assets/Resgistration/infocircle.svg";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
-export default function MarketRegistration(){
-
-    const day = ['일', '월', '화', '수', '목', '금', '토'];
+export default function MarketRegistration() {
+    const navigate = useNavigate('');
+    const day = ["일", "월", "화", "수", "목", "금", "토"];
     const [storeName, setStoreName] = useState("");
     const [category, setCategory] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
@@ -36,20 +37,32 @@ export default function MarketRegistration(){
         if (value.length > 2) {
             value = value.slice(0, 2);
         }
-        event.target.value = value.replace(/\D/g, '');
+        event.target.value = value.replace(/\D/g, "");
     };
 
-    const handleContent = (event) => {
-        setStoreName(""); setCategory(""); setPhoneNumber(""); setAddress(""); setSelectedOpenTime("");
-        setSelectedClosedTime(""); setSelectedDays([]); setIsFormComplete(false);
+    const handleContent = () => {
+        setStoreName("");
+        setCategory("");
+        setPhoneNumber("");
+        setAddress("");
+        setSelectedOpenTime("");
+        setSelectedClosedTime("");
+        setSelectedDays([]);
+        setIsFormComplete(false);
         document.querySelectorAll("input[placeholder='00']").forEach((input) => {
             input.value = "00";
         });
-    }
+    };
 
     useEffect(() => {
-        const isComplete = storeName && category && phoneNumber && address && selectedDays.length > 0 
-            && selectedOpenTime && selectedClosedTime;
+        const isComplete =
+            storeName &&
+            category &&
+            phoneNumber &&
+            address &&
+            selectedDays.length > 0 &&
+            selectedOpenTime &&
+            selectedClosedTime;
         setIsFormComplete(isComplete);
     }, [storeName, category, phoneNumber, address, selectedDays, selectedOpenTime, selectedClosedTime]);
 
@@ -96,15 +109,17 @@ export default function MarketRegistration(){
                     )}
                 </DropdownContainer>
 
-                <div style={{display:"flex", gap:"0.5rem", width: "100%"}}>
-                <Input
-                    placeholder="입점하고 계신 전통시장의 이름을 입력해주세요."
-                    value={traditionalMarketName}
-                    onChange={(e) => setTraditionalMarketName(e.target.value)}
-                    style={{width:"80%"}}
-                />
-                <SubmitButton>등록</SubmitButton>
-                </div>
+                {category === "전통시장" && (
+                    <div style={{ display: "flex", gap: "0.5rem", width: "100%" }}>
+                        <Input
+                            placeholder="입점하고 계신 전통시장의 이름을 입력해주세요."
+                            value={traditionalMarketName}
+                            onChange={(e) => setTraditionalMarketName(e.target.value)}
+                            style={{ width: "78%" }}
+                        />
+                        <SubmitButton>등록</SubmitButton>
+                    </div>
+                )}
 
                 <Title style={{ marginTop: "1.25rem" }}>가게 전화번호</Title>
                 <Input
@@ -197,27 +212,24 @@ export default function MarketRegistration(){
                         color: isFormComplete ? "#FFF" : "#999",
                         cursor: isFormComplete ? "pointer" : "not-allowed",
                     }}
+                    onClick={()=>navigate('/')}
                 >
                     등록하기
                 </RegisterButton>
-                <div style={{width: "100%", display:"flex", justifyContent:"center"}}>
-                    <Xbutton onClick={()=>{handleContent()}}>X 취소하기</Xbutton>
+                <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+                    <Xbutton onClick={() => handleContent()}>X 취소하기</Xbutton>
                 </div>
 
-    <InfoContainer>
-        <Font>서비스 설정</Font>
-        <InfoOption>로그아웃</InfoOption>
-        <InfoOption>자주 묻는 질문</InfoOption>
-        <InfoOption>고객센터</InfoOption>
-        <InfoOption>제작자</InfoOption>
-    </InfoContainer>
-    
-    </Wrapper>
-    <Footer/>
-
-    
-
-    </>
+                <InfoContainer>
+                    <Font>서비스 설정</Font>
+                    <InfoOption>로그아웃</InfoOption>
+                    <InfoOption>자주 묻는 질문</InfoOption>
+                    <InfoOption>고객센터</InfoOption>
+                    <InfoOption>제작자</InfoOption>
+                </InfoContainer>
+            </Wrapper>
+            <Footer />
+        </>
     );
 }
 
@@ -456,16 +468,16 @@ const DropdownItem = styled.li`
 `;
 
 const SubmitButton = styled.div`
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   display: inline-flex;
   height: 2.75rem;
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
-  background: #EEE;
+  background: ${({ disabled }) => (disabled ? "#EEE" : "#F07D45")};
   margin-top: 0.5rem;
   padding: 0 1.56rem;
-  color: #999;
+  color: ${({ disabled }) => (disabled ? "#999" : "#FFF")};
   text-align: center;
   font-family: Pretendard;
   font-size: 1rem;

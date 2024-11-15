@@ -9,11 +9,13 @@ import { useState } from "react";
 import { hoverGrow } from "../../shared/animation/hoverGrow";
 import TotalHelfoome from "../../entities/helfoome/TotalHelfoome";
 import Nav from "../../shared/components/Nav";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Normal(){
 
     const [userName, setUserName] = useState("세은");
     const [profileImg, setProfileImg] = useState(profile);
+    const navigate = useNavigate('');
 
     return(
     <Wrapper>
@@ -51,7 +53,7 @@ export default function Normal(){
             <Title>판매자이신가요?</Title>
             <Subtitle>* 판매자로 등록을 완료하고 판매글을 올려보세요.</Subtitle>
             </div>
-            <Button>사업자 등록하기</Button>
+            <Button onClick={()=>navigate('/company-certification')}>사업자 등록하기</Button>
         </CompanyContainer>
         <Line/>
         <div style={{padding: "1.25rem 0 0 1rem", marginBottom: "4.375rem"}}>

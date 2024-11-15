@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import CommunityContent from "./CommunityContent";
 import { hoverGrow } from "../../shared/animation/hoverGrow";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Popular(){
+
+    const navigate = useNavigate('');
 
     return(
         <>
             <Header>
                 <Title>인기글 💥</Title>
-                <More>더보기 &gt;</More>
+                <More onClick={()=>navigate('/community-popular-more')}>더보기 &gt;</More>
             </Header>
             <Content>  
                 <CommunityContent/>
