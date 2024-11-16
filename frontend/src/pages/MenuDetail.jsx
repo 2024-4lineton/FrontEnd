@@ -46,6 +46,10 @@ export default function MenuDetail(){
         }
       }, [isReservationModalOpen, navigate]);
 
+      const orderHandler = async () => {
+
+      }
+
     return(
     <Wrapper>
 
@@ -60,14 +64,14 @@ export default function MenuDetail(){
         <MenuImg src={item.imgUrl}/>
 
         <MenuContainer>
-            <MenuName>{item.shopName}</MenuName>
+            <MenuName>{item.productName}</MenuName>
             <Container>
                <PriceContainer>
                     <Sale>{item.discountPercent}%</Sale>
-                    <Origin>{item.price}</Origin>
+                    <Origin>{item.price}원</Origin>
                     <Price>{item.discountPrice}원</Price>
                 </PriceContainer> 
-                <LeftCnt>* {item.quantity}개</LeftCnt>
+                <LeftCnt>* 잔여수량{item.quantity}개</LeftCnt>
             </Container>
 
             <Info>가게 주소</Info>
