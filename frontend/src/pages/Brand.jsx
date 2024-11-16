@@ -5,13 +5,13 @@ import Title from "../entities/streetMarket/Title";
 import { useEffect, useState } from "react";
 import MarketDetailContent from "../entities/traditionalMarket/detail/MarketDetailContent";
 import { useRecoilValue } from "recoil";
-import { dummyToken } from "../shared/state/token";
+import { userToken } from "../shared/state/token";
 import { getProductList } from "../apis/api/productList";
 
 export default function Brand() {
   const [selected, setSelected] = useState("단거리");
   const [market, setMarket] = useState([]);
-  const token = useRecoilValue(dummyToken);
+  const token = useRecoilValue(userToken);
 
   const handleClick = (buttonName) => {
     setSelected(buttonName);

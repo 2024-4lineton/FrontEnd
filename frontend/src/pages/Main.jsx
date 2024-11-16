@@ -3,17 +3,23 @@ import MainComponent from "../entities/main/MainComponent";
 import { useEffect } from "react";
 import { getUser } from "../apis/api/user";
 import { useNavigate } from "react-router-dom";
-import { atom } from "recoil";
-
-const dummyToken = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJrYWthbyBiZWF1dGlmdWxib3lfMzNAbmF2ZXIuY29tIiwiaWF0IjoxNzMxNDMxNDYzLCJleHAiOjE3MzIwMzYyNjN9.fjFDee_YWIE8nHiLTainJKW-6tuifXfaPK2ciYPdQpI";
+import { atom, useRecoilState, useRecoilValue } from "recoil";
+import { dummyToken, userToken } from "../shared/state/token";
+import { getCookie } from "../apis/utils/Cookie";
 
 export default function Main() {
+  const [token, setToken] = useRecoilState(userToken);
   const navigate = useNavigate();
 
   useEffect(() => {
+    try {
+      setToken(getCookie("Authorization"));
+    } catch(e) {
+      console.error(e);
+    }
     const fetchUser = async () => {
       try {
-        const response = await getUser({token: dummyToken});
+        const response = await getUser({token});
         console.log(response.data);
         if(response.data === true) {
           navigate("/AddInfo1");
@@ -21,6 +27,13 @@ export default function Main() {
       } catch(e) {
         console.log(e);
       }
+    }
+
+    if(token) {
+      console.log(token);
+      fetchUser();
+    } else {
+      navigate("/Login")
     }
 
     // fetchUser(); 다시 주석 풀어야 함.

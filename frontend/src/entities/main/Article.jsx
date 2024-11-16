@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { defaultApi } from "../../apis/utils/Instance";
 import { useRecoilValue } from "recoil";
-import { dummyToken } from "../../shared/state/token";
+import { userToken } from "../../shared/state/token";
 
 export default function Article() {
   const [selected, setSelected] = useState("아티클");
   const navigate = useNavigate("");
-  const token = useRecoilValue(dummyToken);
+  const token = useRecoilValue(userToken);
   const [article, setArticle] = useState([]);
 
   const handleClick = (buttonName) => {
