@@ -15,7 +15,7 @@ export default function Main() {
   useEffect(() => {
     const getToken  = async () => {
       try {
-        const response = await defaultApi.get(`http://localhost:3000/`);
+        const response = await defaultApi.get(`/api/users/access-token`);
 
         console.log(response);
       } catch(e) {

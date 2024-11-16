@@ -57,7 +57,7 @@ export default function MenuDetail(){
         </TitleContainer>
 
 
-        <MenuImg src={menu}/>
+        <MenuImg src={item.imgUrl}/>
 
         <MenuContainer>
             <MenuName>{item.shopName}</MenuName>
@@ -65,7 +65,7 @@ export default function MenuDetail(){
                <PriceContainer>
                     <Sale>{item.discountPercent}%</Sale>
                     <Origin>{item.price}</Origin>
-                    <Price>{item.discontPrice}원</Price>
+                    <Price>{item.discountPrice}원</Price>
                 </PriceContainer> 
                 <LeftCnt>* {item.quantity}개</LeftCnt>
             </Container>
