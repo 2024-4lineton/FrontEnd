@@ -9,7 +9,7 @@ export default function LastChanceContainer({item}){
     const [timeLeft, setTimeLeft] = useState("");
 
     useEffect(() => {
-        const endTime = new Date("2024-11-02T23:00:00"); //마감 시간 설정 백엔드에서 받기
+        const endTime = new Date(item.endTime); //마감 시간 설정 백엔드에서 받기
         const updateTimer = () => {
             const now = new Date();
             const diff = endTime - now;

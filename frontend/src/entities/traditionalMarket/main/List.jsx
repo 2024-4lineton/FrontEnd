@@ -8,7 +8,7 @@ export default function List({item, onClick}){
         <Img src={item.imgUrl}/>
         <Content>
             <Name>{item.shopName}</Name>
-            <Intro>{item.description} {item.shopName}</Intro>
+            <Intro>{item.description}</Intro>
             <Info>
                 <div>{item.distance}</div>
                 <div>|</div>
