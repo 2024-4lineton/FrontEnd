@@ -6,7 +6,7 @@ import { Navigate, useNavigate, usesNavigate } from "react-router-dom";
 
 export default function Dashboard(){
 
-    const [cnt, setCnt] = useState(0);
+    const [cnt, setCnt] = useState(7);
     const navigate = useNavigate("/");
     
     return(

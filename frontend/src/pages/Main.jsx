@@ -15,7 +15,7 @@ export default function Main() {
   useEffect(() => {
     const getToken  = async () => {
       try {
-        const response = await defaultApi.get(`/api/users/access-token`);
+        const response = await defaultApi.get(`/api/users/access-token`, {withCredentials: true});
 
         console.log(response);
       } catch(e) {
