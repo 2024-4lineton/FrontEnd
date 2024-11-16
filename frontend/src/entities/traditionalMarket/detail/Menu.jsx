@@ -11,7 +11,7 @@ export default function Menu({item}){
 
         <Img src={item.imgUrl}/>
 
-        <Content onClick={()=>navigate('/menu-detail')}>
+        <Content onClick={()=>navigate('/menu-detail', {state: {item: item}})}>
             <Name>{item.shop}</Name>
             <MenuName>{item.productName}</MenuName>
 

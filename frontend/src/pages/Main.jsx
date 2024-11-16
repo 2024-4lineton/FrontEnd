@@ -6,45 +6,56 @@ import { useNavigate } from "react-router-dom";
 import { atom, useRecoilState, useRecoilValue } from "recoil";
 import { dummyToken, userToken } from "../shared/state/token";
 import { getCookie } from "../apis/utils/Cookie";
+import { defaultApi } from "../apis/utils/Instance";
 
 export default function Main() {
   const [token, setToken] = useRecoilState(userToken);
   const navigate = useNavigate();
 
   useEffect(() => {
-    try {
-      setToken(getCookie("Authorization"));
-    } catch(e) {
-      console.error(e);
-    }
-    const fetchUser = async () => {
+    const getToken  = async () => {
       try {
-        const response = await getUser({token});
-        console.log(response.data);
-        if(response.data === true) {
-          navigate("/AddInfo1");
-        }
+        const response = await defaultApi.get(`http://localhost:3000/`);
+
+        console.log(response);
       } catch(e) {
-        console.log(e);
+        console.error(e);
       }
     }
 
-    if(token) {
-      console.log(token);
-      fetchUser();
-    } else {
-      navigate("/Login")
-    }
+    getToken();
 
-    // fetchUser(); 다시 주석 풀어야 함.
-    
-    const urlParmas = new URLSearchParams(window.location.search);
-    const authorizationCode = urlParmas.get("code");
+    // const urlParmas = new URLSearchParams(window.location.search);
+    // const authorizationCode = urlParmas.get("code");
 
-    if (authorizationCode) {
-      window.history.replaceState({}, document.title, "/");
-    }
+    // if (authorizationCode) {
+    //   window.history.replaceState({}, document.title, "/");
+    // }
   }, []);
+
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     try {
+  //       const response = await getUser({token});
+  //       console.log(response.data);
+  //       if(response.data === true) {
+  //         navigate("/AddInfo1");
+  //       }
+  //     } catch(e) {
+  //       console.log(e);
+  //     }
+  //   }
+
+
+  //   // if(token) {
+  //   //   console.log(token);
+  //   //   fetchUser();
+  //   // } else {
+  //   //   navigate("/Login")
+  //   // }
+
+  //   // fetchUser(); 다시 주석 풀어야 함.
+  // }, [token]);
 
   return (
     <>

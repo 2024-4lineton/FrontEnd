@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Header from "../shared/components/Header";
 import menu from "../assets/TraditionalMarket/menu.svg";
 import back from "../assets/TraditionalMarket/arrow.svg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CartModal from "../entities/menuDetail/CartModal";
 import ReservationModal from "../entities/menuDetail/ReservationModal";
 import { useState, useEffect } from "react";
@@ -13,8 +13,10 @@ export default function MenuDetail(){
     const [isCartModalOpen, setIsCartModalOpen] = useState(false);
     const [isReservationModalOpen, setIsReservationModalOpen] = useState(false);
     const [origin, setOrigin] = useState("5,000");
-    const [price, setPrice] = useState("2,500");
-    const [sale, setSale] = useState("50");
+    // const [price, setPrice] = useState("2,500");
+    // const [sale, setSale] = useState("50");
+    const location = useLocation();
+    const {item} = location.state || {};
 
     const openCartModal = () => {
         setIsCartModalOpen(true);
@@ -51,25 +53,25 @@ export default function MenuDetail(){
 
         <TitleContainer onClick={()=>navigate(-1)}>
             <Icon src={back}/>
-            <Name>돈암김밥</Name>
+            <Name>{item.shop}</Name>
         </TitleContainer>
 
 
         <MenuImg src={menu}/>
 
         <MenuContainer>
-            <MenuName>원조김밥</MenuName>
+            <MenuName>{item.shopName}</MenuName>
             <Container>
                <PriceContainer>
-                    <Sale>{sale}%</Sale>
-                    <Origin>{origin}</Origin>
-                    <Price>{price}원</Price>
+                    <Sale>{item.discountPercent}%</Sale>
+                    <Origin>{item.price}</Origin>
+                    <Price>{item.discontPrice}원</Price>
                 </PriceContainer> 
-                <LeftCnt>* 잔여수량 2개</LeftCnt>
+                <LeftCnt>* {item.quantity}개</LeftCnt>
             </Container>
 
             <Info>가게 주소</Info>
-            <Address>서울특별시 성북구 삼선교로 01길 001 상가 2층</Address>
+            <Address>{item.realAddr}</Address>
         </MenuContainer>
 
         <ButtonContainer>

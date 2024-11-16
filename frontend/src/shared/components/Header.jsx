@@ -6,6 +6,7 @@ import cart from '../../assets/Header/cart.svg'
 import noti from '../../assets/Header/noti.svg';
 import { useState,useEffect } from 'react'
 import {useNavigate} from 'react-router-dom';
+import { defaultApi } from '../../apis/utils/Instance'
 
 export default function Header(){
 
@@ -17,12 +18,23 @@ export default function Header(){
         setNotiFlag(flag);
     }, []);
 
+    const logout = async () => {
+      try {
+        const response = await defaultApi.post(`api/users/log-out`);
+        console.log(response);
+        navigate("/");
+      } catch(e) {
+        console.error(e);
+      }
+    }
+
     return(
     <Wrapper>
 
         <Logo src={logo} onClick={()=>navigate('/')}/>
 
         <ButtonContainer>
+                <p style={{fontSize: "0.1rem"}} onClick={logout}>로그아웃</p>
                 <Button src={search} />
                 <Button
                     src={notiFlag === "1" ? noti : bell}
