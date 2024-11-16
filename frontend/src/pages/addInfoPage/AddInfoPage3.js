@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { userInfo } from "../../shared/state/userInfo";
 import { defaultApi } from "../../apis/utils/Instance";
-import { dummyToken } from "../../shared/state/token";
+import { userToken } from "../../shared/state/token";
 import defaultProfileImg from "../../assets/AddInfo/defaultProfileImg.svg";
 
 export default function AddInfoPage3() {
@@ -17,7 +17,7 @@ export default function AddInfoPage3() {
   // const [LBS,SetLBS] = useState(true);
   const [marketingPolicy, setMarketingPolicy] = useState(false);
   const [user, setUser] = useRecoilState(userInfo);
-  const token = useRecoilValue(dummyToken);
+  const token = useRecoilValue(userToken);
   const navigate = useNavigate();
 
   const selectAllAgree = () => {

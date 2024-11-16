@@ -3,10 +3,10 @@ import RecommendContainer from "./RecommendContainer";
 import { useEffect, useState } from "react";
 import { defaultApi } from "../../apis/utils/Instance";
 import { useRecoilValue } from "recoil";
-import {dummyToken} from "../../shared/state/token.js";
+import {userToken} from "../../shared/state/token.js";
 
 export default function Recommend() {
-  const token = useRecoilValue(dummyToken);
+  const token = useRecoilValue(userToken);
   const [recommendItem, setRecommendItem] = useState([]);
 
   useEffect(() => {

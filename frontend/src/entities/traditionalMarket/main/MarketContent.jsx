@@ -8,7 +8,7 @@ import {
 } from "../../../shared/state/Market";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { dummyToken } from "../../../shared/state/token";
+import { userToken } from "../../../shared/state/token";
 import { defaultApi } from "../../../apis/utils/Instance";
 
 export default function MarketContent() {
@@ -16,7 +16,7 @@ export default function MarketContent() {
   const navigate = useNavigate("");
   const [option, setOption] = useState("가까운순");
   const [isOpen, setIsOpen] = useState(false);
-  const token = useRecoilValue(dummyToken);
+  const token = useRecoilValue(userToken);
   const [market, setMarket] = useState([]);
 
   const handleOptionClick = (selectedOption) => {
